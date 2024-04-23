@@ -1,15 +1,15 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "Kadoa API",
   "logo": {
-    "dark": "/logo/dark.svg",
-    "light": "/logo/light.svg"
+    "dark": "/logo/kadoa-logo.svg",
+    "light": "/logo/kadoa-logo.svg"
   },
   "favicon": "/favicon.svg",
   "colors": {
-    "primary": "#0D9373",
-    "light": "#07C983",
-    "dark": "#0D9373",
+    "primary": "#5E17EB",
+    "light": "#5E17EB",
+    "dark": "#5E17EB",
     "anchors": {
       "from": "#0D9373",
       "to": "#07C983"
