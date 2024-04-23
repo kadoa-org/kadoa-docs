@@ -5,6 +5,10 @@
     "dark": "/logo/kadoa-logo.svg",
     "light": "/logo/kadoa-logo.svg"
   },
+  "modeToggle": {
+    "default": "light",
+    "isHidden": true
+  },
   "favicon": "/favicon.svg",
   "colors": {
     "primary": "#5E17EB",
