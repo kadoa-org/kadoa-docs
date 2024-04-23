@@ -81,6 +81,7 @@
       {
         "group": "Workflow Management",
         "pages": [
+          "api-reference/workflow-management/add-a-new-workflow-for-an-existing-data-schema",
           "api-reference/workflow-management/run-a-specific-workflow",
           "api-reference/workflow-management/schedule-a-specific-workflow",
           "api-reference/workflow-management/change-the-limit-for-a-specific-workflow",
@@ -104,7 +105,7 @@
       {
         "group": "Workflow History",
         "pages": [
-          "api-reference/workflow-history/retrieve-the-history-of-runs-for-a-specific-workflow-by-its-id"
+          "api-reference/workflow-history/retrieve-the-run-history"
         ]
       },
       {
@@ -122,9 +123,9 @@
       {
         "group": "Webhook Management",
         "pages": [
-          "api-reference/webhook-management/subscribe-to-events-with-webhook-see-available-events-with-description-on-the-events-api",
+          "api-reference/webhook-management/subscribe-to-events-with-webhook",
           "api-reference/webhook-management/unsubscribe-from-events",
-          "api-reference/webhook-management/list-all-webhook-subscriptions-for-the-authenticated-user"
+          "api-reference/webhook-management/list-all-webhook-subscriptions"
         ]
       }
   ],
