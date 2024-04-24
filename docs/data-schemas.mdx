@@ -1,0 +1,85 @@
+---
+title: 'Data Schemas'
+description: ''
+---
+
+## What is a data schema?
+
+Every workflow at Kadoa needs a data schema. It tells Kadoa:
+
+-   what entity to look for in source data
+-   what fields to extract for the selected entity.
+
+For example, entity might be news, comments, etc.  
+And for news, fields might be title, date, summary, etc.
+
+## How do I manage my data schemas?
+
+To create a new schema:
+
+-   [Add a workflow](https://www.kadoa.com/add)
+-   Select Auto-detect
+-   Enter data source URL and wait for Kadoa to detect entities and fields
+-   Edit the fields as needed
+-   Click Save as data schema
+
+## Job postings schema
+
+When you [create a new workflow](https://www.kadoa.com/add) using this schema, Kadoa will extract the following common fields:
+
+| Name | Description | Example |
+| --- | --- | --- |
+| description | Job description including roles, responsibilities, and company overview | Responsible for developing and maintaining web applications... |
+| jobTitle | The title of the job being posted | Senior Software Engineer |
+| datePosted | The date when the job was posted, formatted as YYYY:MM:DD:hh:mm:ss | 2023:11:20:10:45:00 |
+| applyUrl | URL where applicants can apply for the job | https[]()://example.com/apply |
+| url | Direct URL to the job posting | https[]()://example.com/job-posting |
+| jobLocation | Structured location data of the job including city, country code, and postal code | `{"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": "San Francisco", "addressCountry": "US", "postalCode": "94103"}}` |
+| baseSalary | Salary range for the job, including currency and timeframe | `{"@type": "MonetaryAmount", "currency": "USD", "value": {"minValue": 100000, "maxValue": 120000, "unitText": "ANNUALLY", "@type": "QuantitativeValue"}}` |
+| workHours | Typical working hours for the job | 9am to 5pm, Monday to Friday |
+| jobBenefits | Array of benefits offered by the company | \["Health insurance", "Retirement plan"\] |
+| qualifications | Array of required qualifications other than work experience | \["Bachelor's degree in Computer Science", "Strong problem-solving skills"\] |
+| experienceRequirements | Array of work experience requirements | \["At least 5 years of experience in software development"\] |
+| recruiterEmail | Email address of the recruiter or hiring manager | `recruiter@example.com` |
+| occupationalCategory | The job category as per a predefined classification | Software and Web Developers |
+| applicationDeadline | The deadline for job application submissions, formatted as YYYY:MM:DD:hh:mm:ss | 2024:01:15:23:59:59 |
+| language | The primary language of the job posting | English |
+| logo | URL to the company's logo | https[]()://example.com/logo.png |
+| employmentType | Type of employment offered in the job posting (e.g., FULL\_TIME, PART\_TIME) | FULL\_TIME |
+| id | Unique identifier for the job posting | abc123xyz |
+
+## Ecommerce schema
+
+When you [create a new workflow](https://www.kadoa.com/add) using this schema, Kadoa will extract the following common fields:
+
+| Name | Description | Example |
+| --- | --- | --- |
+| link | URL link to the product page | https[]()://example.com/product/samsung-galaxy-s23 |
+| name | Name of the product | Samsung Galaxy S23 256GB |
+| brand | Brand name of the product | Samsung |
+| price | Price of the product | 999.99 |
+| priceCurrency | Currency code for the product price | USD |
+| specs | Technical specifications of the product | `{"Processor": "Snapdragon 8 Gen 1", "RAM": "8GB"}` |
+| description | Full product description | The latest Samsung Galaxy S23 comes with a Snapdragon 8 Gen 1 processor, 8GB RAM, and a 256GB storage. |
+| sku | Stock Keeping Unit identifier for the product | SGS23-256GB-BLK |
+| gtin | Global Trade Item Number for the product | 00012345678905 |
+| ean | European Article Number for the product | 1234567890123 |
+| images | Array of image URLs of the product | \["https://example.com/images/product/samsung-galaxy-s23-front.jpg", "https://example.com/images/product/samsung-galaxy-s23-back.jpg"\] |
+| reviews | Number of reviews for the product | 102 |
+
+## News article schema
+
+When you [create a new workflow](https://www.kadoa.com/add) using this schema, Kadoa will extract the following common fields:
+
+| Name | Description | Example |
+| --- | --- | --- |
+| title | The title of the news article | Reading news improves cognitive function |
+| fullText | Full text of the article | This is a full article about something interesting - hopefully |
+| author | Author of the job posting | John Doe |
+| datePosted | The date when the news article was posted | 2023:11:20:10:45:00 |
+| readTime | Expected reading time for this article | 24min |
+| language | The primary language of the article | EN |
+| dateScraped | The date when the news article was extracted | 2023:11:20:10:45:00 |
+| url | Direct URL to the news article | https[]()://example.com/news |
+| scraperName | Name of the scraper from the dashboard | News Site Name |
+| id | Unique identifier for the news posting | abc123xyz |
