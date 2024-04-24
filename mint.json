@@ -81,7 +81,7 @@
       {
         "group": "Workflow Management",
         "pages": [
-          "api-reference/workflow-management/add-a-new-workflow-for-an-existing-data-schema",
+          "api-reference/workflow-management/create-a-new-workflow-for-an-existing-data-schema",
           "api-reference/workflow-management/run-a-specific-workflow",
           "api-reference/workflow-management/schedule-a-specific-workflow",
           "api-reference/workflow-management/change-the-limit-for-a-specific-workflow",
@@ -99,13 +99,13 @@
       {
         "group": "Workflow Status",
         "pages": [
-          "api-reference/workflow-status/retrieve-the-status-of-a-specific-workflow-by-its-id"
+          "api-reference/workflow-status/retrieve-the-status-of-a-specific-workflow"
         ]
       },
       {
         "group": "Workflow History",
         "pages": [
-          "api-reference/workflow-history/retrieve-the-run-history"
+          "api-reference/workflow-history/retrieve-the-workflow-run-history"
         ]
       },
       {
@@ -123,13 +123,13 @@
       {
         "group": "Webhook Management",
         "pages": [
-          "api-reference/webhook-management/subscribe-to-events-with-webhook",
-          "api-reference/webhook-management/unsubscribe-from-events",
-          "api-reference/webhook-management/list-all-webhook-subscriptions"
+          "api-reference/webhook-management/subscribe-to-webhook-events",
+          "api-reference/webhook-management/unsubscribe-from-webhook-events",
+          "api-reference/webhook-management/list-all-webhook-event-subscriptions"
         ]
       }
   ],
-  "openapi": ["/openapi.json"],
+  "openapi": "https://api.kadoa.com/openapi",
   "footerSocials": {
     "x": "https://x.com/mintlify",
     "github": "https://github.com/mintlify",
