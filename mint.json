@@ -22,12 +22,12 @@
   "topbarLinks": [
     {
       "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "url": "mailto:supprt@kadoa.com"
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "Kadoa Dashboard",
+    "url": "https://kadoa.com/dashboard"
   },
   "tabs": [
     {
@@ -37,19 +37,14 @@
   ],
   "anchors": [
     {
-      "name": "Documentation",
+      "name": "Help",
       "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
+      "url": "https://kadoa.com/help"
     },
     {
       "name": "Blog",
       "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
+      "url": "https://kadoa.com/blog"
     }
   ],
   "navigation": [
