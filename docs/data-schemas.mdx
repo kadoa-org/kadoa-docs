@@ -7,11 +7,8 @@ description: ''
 
 Every workflow at Kadoa needs a data schema. It tells Kadoa:
 
--   what entity to look for in source data
--   what fields to extract for the selected entity.
-
-For example, entity might be news, comments, etc.  
-And for news, fields might be title, date, summary, etc.
+-   what entity to look for in source data (such as products, jobs, news)
+-   what fields to extract for the selected entity (such as title, price, description)
 
 ## How do I manage my data schemas?
 
@@ -23,7 +20,19 @@ To create a new schema:
 -   Edit the fields as needed
 -   Click Save as data schema
 
-## Job postings schema
+## Using pre-defined data schemas
+Kadoa offers pre-defined schemas for common use cases.
+These schemas come with a set of standard fields that Kadoa will extract, but you can still customize them based on your specific needs.
+
+Currently available data schemas:
+- [job postings](#job-postings-schema)
+- [ecommerce products](#ecommerce-schema)
+- [news articles](#news-article-schema)
+
+more to come soon!
+
+
+### Job postings schema
 
 We offer a [dedicated API endpoint](https://services.kadoa.com/api-docs/) optimized for fetching structured job posting data.
 When you [create a new workflow](https://www.kadoa.com/add) using this schema, Kadoa will extract the following common fields:
@@ -49,7 +58,7 @@ When you [create a new workflow](https://www.kadoa.com/add) using this schema, K
 | employmentType | Type of employment offered in the job posting (e.g., FULL\_TIME, PART\_TIME) | FULL\_TIME |
 | id | Unique identifier for the job posting | abc123xyz |
 
-## Ecommerce schema
+### Ecommerce schema
 
 When you [create a new workflow](https://www.kadoa.com/add) using this schema, Kadoa will extract the following common fields:
 
@@ -68,7 +77,7 @@ When you [create a new workflow](https://www.kadoa.com/add) using this schema, K
 | images | Array of image URLs of the product | \["https://example.com/images/product/samsung-galaxy-s23-front.jpg", "https://example.com/images/product/samsung-galaxy-s23-back.jpg"\] |
 | reviews | Number of reviews for the product | 102 |
 
-## News article schema
+### News article schema
 
 When you [create a new workflow](https://www.kadoa.com/add) using this schema, Kadoa will extract the following common fields:
 
