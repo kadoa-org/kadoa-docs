@@ -34,9 +34,10 @@
       "group": "Documentation",
       "pages": [
         "docs/introduction",
-				"docs/workflows",
-				"docs/data-schemas",
-				"docs/credits"
+        "docs/quickstart",
+        "docs/workflows",
+        "docs/data-schemas",
+        "docs/credits"
       ]
     },
     {
