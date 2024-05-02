@@ -35,7 +35,7 @@
       "pages": [
         "docs/introduction",
         "docs/quickstart",
-        "docs/workflows",
+        "docs/workflow-states",
         "docs/data-schemas",
         "docs/credits"
       ]
