@@ -37,7 +37,11 @@
         "docs/quickstart",
         "docs/workflow-states",
         "docs/data-schemas",
-        "docs/credits"
+        "docs/credits",
+        {
+          "group": "Integrations",
+          "pages": ["docs/integrations/google-sheets"]
+        }
       ]
     },
     {
@@ -76,9 +80,7 @@
         },
         {
           "group": "Workflow Data",
-          "pages": [
-            "api-reference/workflow-data/get-workflow-data-by-its-id"
-          ]
+          "pages": ["api-reference/workflow-data/get-workflow-data-by-its-id"]
         },
         {
           "group": "Event Management",
