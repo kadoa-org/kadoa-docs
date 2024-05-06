@@ -30,40 +30,40 @@ Copy and paste the following template code into the script editor:
 
 ```javascript
 function fetchDataFromKadoa() {
-var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-var url = "https://api.kadoa.com/v2/data/WORKFLOW-ID"; // Add Kadoda workflow ID
-var headers = {
-"x-api-key": "your-api-key-here" // Replace this with your API key
-};
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  var url = "https://api.kadoa.com/v2/data/WORKFLOW-ID"; // Add Kadoa workflow ID
+  var headers = {
+    "x-api-key": "your-api-key-here", // Replace this with your API key
+  };
 
-var options = {
-"method": "get",
-"headers": headers
-};
+  var options = {
+    method: "get",
+    headers: headers,
+  };
 
-var response = UrlFetchApp.fetch(url, options);
-var data = JSON.parse(response.getContentText());
+  var response = UrlFetchApp.fetch(url, options);
+  var data = JSON.parse(response.getContentText());
 
-// Get column headers dynamically
-var headers = [];
-if (data.length > 0) {
-headers = Object.keys(data[0].data[0]);
-}
+  // Get column headers dynamically
+  var headers = [];
+  if (data.length > 0) {
+    headers = Object.keys(data[0].data[0]);
+  }
 
-// Write headers to the sheet
-sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
+  // Write headers to the sheet
+  sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
 
-// Write data to the sheet
-var rowData = [];
-data.forEach(function(item) {
-var row = [];
-Object.keys(item.data[0]).forEach(function(key) {
-row.push(item.data[0][key]);
-});
-rowData.push(row);
-});
+  // Write data to the sheet
+  var rowData = [];
+  data.forEach(function (item) {
+    var row = [];
+    Object.keys(item.data[0]).forEach(function (key) {
+      row.push(item.data[0][key]);
+    });
+    rowData.push(row);
+  });
 
-sheet.getRange(sheet.getLastRow() + 1, 1, rowData.length, rowData[0].length).setValues(rowData);
+  sheet.getRange(sheet.getLastRow() + 1, 1, rowData.length, rowData[0].length).setValues(rowData);
 }
 ```
 
