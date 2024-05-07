@@ -1,10 +1,13 @@
 ---
-title: Fetching Data from Kadoa API to Google Sheet
+title: Import Kadoa Data to Google Sheets
 ---
 
 ## Overview
 
 In this guide, we'll walk through the process of fetching data from the Kadoa API and adding it to a Google Sheet using Google Apps Script.
+
+
+<Note>This workaround is a temporary solution until Kadoa releases an official Google Sheets integration.</Note>
 
 ## Prerequisites
 
@@ -16,24 +19,18 @@ Before you begin, make sure you have the following:
 
 ## Step-by-Step Guide
 
-### 1. Set up a Google Sheet
+1. In your Google Sheet, go to "Extensions" -> "Apps Script" to open the Google Apps Script editor.
 
-Create a new Google Sheet where you want to store the data fetched from the Kadoa API.
-
-### 2. Open Google Apps Script
-
-In your Google Sheet, go to "Extensions" -> "Apps Script" to open the Google Apps Script editor.
-
-### 3. Write the Script
-
-Copy and paste the following template code into the script editor:
+2. Replace the contents of the script editor with the following code:
 
 ```javascript
 function fetchDataFromKadoa() {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
-  var url = "https://api.kadoa.com/v2/data/WORKFLOW-ID"; // Add Kadoa workflow ID
+  var workflowId = 'YOUR_WORKFLOW_ID'; // Add Kadoa workflow ID
+  var apiKey = 'YOUR_API_KEY'; // Add Kadoa API key
+  var url = `https://api.kadoa.com/v2/data/${workflowId}`;
   var headers = {
-    "x-api-key": "your-api-key-here", // Replace this with your API key
+    "x-api-key": apiKey
   };
 
   var options = {
@@ -67,22 +64,21 @@ function fetchDataFromKadoa() {
 }
 ```
 
-### 4. Run the Script
+3. Replace `'YOUR_WORKFLOW_ID'` with your Kadoa workflow ID and `'YOUR_API_KEY'` with your Kadoa API key.
 
-Save the script, then run the function `fetchDataFromKadoa()` either by clicking the play button in the toolbar or by going to "Run" -> "Run function" -> "fetchDataFromKadoa".
+4. Save the script and run the `fetchDataFromKadoa` function either by clicking the play button in the toolbar or by going to "Run" -> "Run function" -> "fetchDataFromKadoa".
 
-### 5. Authorization
 
-If this is your first time running a script accessing external APIs, you may need to authorize the script to access external services. Follow the prompts to do so.
+5. If this is your first time running a script accessing external APIs, authorize the script to access external services.
 
-### 6. Check the Results
+6. Check your Google Sheet. The data from the Kadoa API should now be populated.
 
-Once the script has finished running, check your Google Sheet. The data from the Kadoa API should now be populated in your sheet.
+## Scheduling Automatic Updates (Optional)
 
-### 7. Schedule the Script (Optional)
+To keep your Google Sheet data in sync with Kadoa, you can set up a trigger to run the script on a schedule:
 
-If you want the data to be updated regularly, you can set up a trigger to run the `fetchDataFromKadoa()` function on a schedule. You can do this by going to "Edit" -> "Current project's triggers" in the script editor and adding a new trigger.
+1. In the script editor, go to "Edit" > "Current project's triggers".
+2. Click "Add Trigger" and configure the desired frequency.
+3. Save the trigger.
 
-## Conclusion
-
-You've successfully fetched data from the Kadoa API and added it to your Google Sheet using Google Apps Script. Feel free to customize the script further to suit your needs.
+The script will now automatically fetch and update the data in your Google Sheet based on the specified schedule.

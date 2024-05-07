@@ -40,7 +40,7 @@
         "docs/credits",
         {
           "group": "Integrations",
-          "pages": ["docs/integrations/google-sheets"]
+          "pages": ["docs/integrations/google-sheets", "docs/integrations/webhooks"]
         }
       ]
     },

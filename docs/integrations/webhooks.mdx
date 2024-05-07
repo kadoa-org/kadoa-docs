@@ -1,0 +1,57 @@
+---
+title: Subscribing to Kadoa Webhooks
+description: Learn how to subscribe to Kadoa webhook events and receive real-time notifications about workflow events.
+---
+
+Kadoa webhooks allow you to receive real-time notifications when specific events occur, such as when a workflow finishes or data changes.
+By subscribing to webhook events, you can automate actions based on these notifications, like triggering another action in your application.
+
+## Subscribing to Webhook Events
+
+To subscribe to Kadoa webhook events, follow these steps:
+
+1. Make a POST request to the `/v2/webhooks/subscribe` endpoint with the following JSON payload:
+
+```json
+{
+  "webhookUrl": "https://your-webhook-url.com/kadoa-events",
+  "webhookHttpMethod": "POST",
+  "events": ["workflow_finished"]
+}
+```
+
+Replace `"https://your-webhook-url.com/kadoa-events"` with the URL where you want to receive the webhook events.
+
+The `events` array should contain the list of events you want to subscribe to. You can fetch the list of available events by making a GET request to the [events endpoint](/api-reference/webhook-management/subscribe-to-webhook-events).
+
+## Handling Webhook Events
+
+When a subscribed event occurs, Kadoa will send a POST request to the specified `webhookUrl` with the event payload. The payload will include information about the event, such as the `workflowId` and any relevant data.
+
+Here's an example of how to handle webhook events in an Express.js application:
+
+```javascript
+app.post('/kadoa-events', (req, res) => {
+  const payload = req.body;
+  console.log('Received Kadoa webhook event:', payload);
+
+  // Process the event payload and perform any necessary actions
+  // ...
+
+  res.sendStatus(200);
+});
+```
+
+In this example, when a POST request is received at the `/kadoa-events` endpoint, the event payload is logged, and you can add your own logic to process the event and perform any necessary actions.
+
+## Unsubscribing from Webhook Events
+
+To unsubscribe from webhook events, make a DELETE request to the [unsubscribe endpoint](/api-reference/webhook-management/unsubscribe-from-webhook-events), using the ID of the subscription you want to remove.
+
+## Best Practices
+
+- Ensure that your webhook endpoint is accessible from the internet and can handle incoming requests from Kadoa.
+- Validate the incoming webhook payload to ensure it originates from Kadoa and contains the expected data.
+- Respond with a `200 OK` status code to acknowledge receipt of the webhook event.
+- Handle webhook events asynchronously to avoid blocking the response to Kadoa.
+
