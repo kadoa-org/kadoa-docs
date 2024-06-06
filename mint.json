@@ -40,64 +40,66 @@
         "docs/credits",
         {
           "group": "Integrations",
-          "pages": ["docs/integrations/google-sheets", "docs/integrations/webhooks"]
+          "pages": [
+            "docs/integrations/google-sheets",
+            "docs/integrations/webhooks"
+          ]
         }
       ]
     },
     {
       "group": "API Reference",
-      "pages": ["api-reference/introduction",
-
-    {
-      "group": "Workflows",
       "pages": [
-        "api-reference/workflows/get-workflow-data-by-its-id",
-        "api-reference/workflows/retrieve-an-overview-of-the-users-workflows",
-        "api-reference/workflows/create-a-new-workflow",
-        "api-reference/workflows/run-a-specific-workflow",
-        "api-reference/workflows/schedule-a-specific-workflow",
-        "api-reference/workflows/change-the-limit-for-a-specific-workflow",
-        "api-reference/workflows/pause-a-specific-workflow",
-        "api-reference/workflows/get-workflow-by-id",
-        "api-reference/workflows/delete-a-specific-workflow",
-        "api-reference/workflows/resume-a-specific-workflow",
-        "api-reference/workflows/retrieve-the-status-of-a-specific-workflow",
-        "api-reference/workflows/retrieve-the-workflow-run-history"
+        "api-reference/introduction",
+        {
+          "group": "Workflows",
+          "pages": [
+            "api-reference/workflows/get-workflow-data-by-its-id",
+            "api-reference/workflows/retrieve-an-overview-of-the-users-workflows",
+            "api-reference/workflows/get-workflow-by-id",
+            "api-reference/workflows/create-a-new-workflow",
+            "api-reference/workflows/run-a-specific-workflow",
+            "api-reference/workflows/schedule-a-specific-workflow",
+            "api-reference/workflows/change-the-limit-for-a-specific-workflow",
+            "api-reference/workflows/pause-a-specific-workflow",
+            "api-reference/workflows/delete-a-specific-workflow",
+            "api-reference/workflows/resume-a-specific-workflow",
+            "api-reference/workflows/retrieve-the-status-of-a-specific-workflow",
+            "api-reference/workflows/retrieve-the-workflow-run-history"
+          ]
+        },
+        {
+          "group": "Schemas",
+          "pages": [
+            "api-reference/schemas/get-all-available-schemas",
+            "api-reference/schemas/get-schema-by-its-id",
+            "api-reference/schemas/delete-a-schema-by-its-id",
+            "api-reference/schemas/rename-a-schema-by-its-id"
+          ]
+        },
+        {
+          "group": "Adhoc",
+          "pages": [
+            "api-reference/adhoc/run-an-synchronous-adhoc-extraction-with-a-schema"
+          ]
+        },
+        {
+          "group": "Events",
+          "pages": [
+            "api-reference/events/get-the-list-of-available-events-for-subscription"
+          ]
+        },
+        {
+          "group": "Webhooks",
+          "pages": [
+            "api-reference/webhooks/list-all-webhook-event-subscriptions",
+            "api-reference/webhooks/subscribe-to-webhook-events",
+            "api-reference/webhooks/unsubscribe-from-webhook-events"
+          ]
+        }
       ]
-    },
-    {
-      "group": "Schemas",
-      "pages": [
-        "api-reference/schemas/get-all-available-schemas",
-        "api-reference/schemas/get-schema-by-its-id",
-        "api-reference/schemas/delete-a-schema-by-its-id",
-        "api-reference/schemas/rename-a-schema-by-its-id"
-      ]
-    },
-    {
-      "group": "Adhoc",
-      "pages": [
-        "api-reference/adhoc/run-an-synchronous-adhoc-extraction-with-a-schema"
-      ]
-    },
-    {
-      "group": "Events",
-      "pages": [
-        "api-reference/events/get-the-list-of-available-events-for-subscription"
-      ]
-    },
-    {
-      "group": "Webhooks",
-      "pages": [
-        "api-reference/webhooks/list-all-webhook-event-subscriptions",
-        "api-reference/webhooks/subscribe-to-webhook-events",
-        "api-reference/webhooks/unsubscribe-from-webhook-events"
-      ]
-    }]
     }
-
-  ]
-,
+  ],
   "openapi": "https://api.kadoa.com/openapi",
   "footerSocials": {
     "linkedin": "https://www.linkedin.com/company/kadoa"
