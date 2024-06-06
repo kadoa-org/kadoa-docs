@@ -46,59 +46,58 @@
     },
     {
       "group": "API Reference",
+      "pages": ["api-reference/introduction",
+
+    {
+      "group": "Workflows",
       "pages": [
-        "api-reference/introduction",
-        {
-          "group": "Workflow Management",
-          "pages": [
-            "api-reference/workflow-management/create-a-new-workflow-for-an-existing-data-schema",
-            "api-reference/workflow-management/run-a-specific-workflow",
-            "api-reference/workflow-management/schedule-a-specific-workflow",
-            "api-reference/workflow-management/change-the-limit-for-a-specific-workflow",
-            "api-reference/workflow-management/pause-a-specific-workflow",
-            "api-reference/workflow-management/delete-a-specific-workflow",
-            "api-reference/workflow-management/resume-a-specific-workflow"
-          ]
-        },
-        {
-          "group": "Overview",
-          "pages": [
-            "api-reference/overview/retrieve-an-overview-of-the-users-workflows"
-          ]
-        },
-        {
-          "group": "Workflow Status",
-          "pages": [
-            "api-reference/workflow-status/retrieve-the-status-of-a-specific-workflow"
-          ]
-        },
-        {
-          "group": "Workflow History",
-          "pages": [
-            "api-reference/workflow-history/retrieve-the-workflow-run-history"
-          ]
-        },
-        {
-          "group": "Workflow Data",
-          "pages": ["api-reference/workflow-data/get-workflow-data-by-its-id"]
-        },
-        {
-          "group": "Event Management",
-          "pages": [
-            "api-reference/event-management/get-the-list-of-available-events-for-subscription"
-          ]
-        },
-        {
-          "group": "Webhook Management",
-          "pages": [
-            "api-reference/webhook-management/subscribe-to-webhook-events",
-            "api-reference/webhook-management/unsubscribe-from-webhook-events",
-            "api-reference/webhook-management/list-all-webhook-event-subscriptions"
-          ]
-        }
+        "api-reference/workflows/get-workflow-data-by-its-id",
+        "api-reference/workflows/retrieve-an-overview-of-the-users-workflows",
+        "api-reference/workflows/create-a-new-workflow",
+        "api-reference/workflows/run-a-specific-workflow",
+        "api-reference/workflows/schedule-a-specific-workflow",
+        "api-reference/workflows/change-the-limit-for-a-specific-workflow",
+        "api-reference/workflows/pause-a-specific-workflow",
+        "api-reference/workflows/get-workflow-by-id",
+        "api-reference/workflows/delete-a-specific-workflow",
+        "api-reference/workflows/resume-a-specific-workflow",
+        "api-reference/workflows/retrieve-the-status-of-a-specific-workflow",
+        "api-reference/workflows/retrieve-the-workflow-run-history"
       ]
+    },
+    {
+      "group": "Schemas",
+      "pages": [
+        "api-reference/schemas/get-all-available-schemas",
+        "api-reference/schemas/get-schema-by-its-id",
+        "api-reference/schemas/delete-a-schema-by-its-id",
+        "api-reference/schemas/rename-a-schema-by-its-id"
+      ]
+    },
+    {
+      "group": "Adhoc",
+      "pages": [
+        "api-reference/adhoc/run-an-synchronous-adhoc-extraction-with-a-schema"
+      ]
+    },
+    {
+      "group": "Events",
+      "pages": [
+        "api-reference/events/get-the-list-of-available-events-for-subscription"
+      ]
+    },
+    {
+      "group": "Webhooks",
+      "pages": [
+        "api-reference/webhooks/list-all-webhook-event-subscriptions",
+        "api-reference/webhooks/subscribe-to-webhook-events",
+        "api-reference/webhooks/unsubscribe-from-webhook-events"
+      ]
+    }]
     }
-  ],
+
+  ]
+,
   "openapi": "https://api.kadoa.com/openapi",
   "footerSocials": {
     "linkedin": "https://www.linkedin.com/company/kadoa"
