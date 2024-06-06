@@ -28,7 +28,7 @@ function fetchDataFromKadoa() {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   var workflowId = 'YOUR_WORKFLOW_ID'; // Add Kadoa workflow ID
   var apiKey = 'YOUR_API_KEY'; // Add Kadoa API key
-  var url = `https://api.kadoa.com/v2/data/${workflowId}`;
+  var url = `https://api.kadoa.com/v3/workflows/${workflowId}/data`;
   var headers = {
     "x-api-key": apiKey
   };
