@@ -6,11 +6,13 @@ title: Credits
 
 Here is the breakdown of all costs associated with a data workflow:
 
-| Action | Cost |
-| --- | --- |
-| Minimum charge per run  | 100 credits |
-| Extracting a data row | 1 credit |
-| Extracting a details page | 10 credits |
+### Standard Mode
+
+| Action                       | Cost          |
+| ---------------------------- | ------------- |
+| Minimum charge per run       | 100 credits   |
+| Extracting a data row        | 1 credit      |
+| Extracting a details page    | 10 credits    |
 
 For example, if your workflow extracts 20 data rows and their detail pages, the total cost for one run would be:
 
@@ -18,10 +20,20 @@ For example, if your workflow extracts 20 data rows and their detail pages, the 
 
 If you extract 50 rows without detail pages:
 
-
 > 50 (rows) * 1 (credit per row) = 50 credits
 
 However, since the total is less than the base cost, you'll be charged the minimum of 100 credits.
+
+### Adhoc Mode
+
+Adhoc mode is only available over API
+
+| Action                                                 | Cost          |
+| ------------------------------------------------------ | ------------- |
+| Extracting a normal page                               | 50 credits    |
+| Extracting a page with user-set location (countryCode) | 200 credits   |
+
+Adhoc mode pricing is due to the more challenging nature and higher expenses associated with live data extraction.
 
 ## Do credits expire?
 
