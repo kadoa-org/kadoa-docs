@@ -38,6 +38,7 @@
         "docs/workflow-states",
         "docs/data-schemas",
         "docs/credits",
+        "docs/monitoring",
         {
           "group": "Integrations",
           "pages": [
