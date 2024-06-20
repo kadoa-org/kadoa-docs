@@ -1,0 +1,81 @@
+---
+title: Chrome extension
+---
+
+The Kadoa Chrome extension offers Kadoa users a new and efficient way to configure their workflows.
+
+[**Install from Chrome Web Store**](https://chromewebstore.google.com/detail/kadoa/nmmlhnjgcechchnkjpkofkjemmlfbnnd)
+
+<video controls className="w-full aspect-video" src="/images/extension-demo.mp4" ></video>
+
+---
+
+## How to use
+
+- Navigate to the webpage containing the data you want to extract.
+- Open the Kadoa extension.
+- Choose whether you want to extract a single object or multiple objects with an identical structure.
+- Select the data.
+- Review and refine the suggested schema.
+- Your new workflow is ready.
+
+To use Kadoa Chrome extension, you need to be logged in to your Kadoa account.
+Log in or sign up here: https://www.kadoa.com/auth
+
+On first launch, you will need to enter your API key.
+Copy it here: https://www.kadoa.com/account
+
+---
+
+## Single object vs. multiple objects
+
+When you select a single object, Kadoa will treat the entire selection as one element.
+
+![Screenshot](/images/extension-single-object.png)
+
+When you select multiple objects, the extracted data will contain a list of elements with identical structures.
+
+![Screenshot](/images/extension-multiple-objects.png)
+
+---
+
+## Compatibility
+
+The Kadoa extension is compatible with recent versions of Google Chrome and other Chromium-based browsers such as Vivaldi and Brave. Currently, Safari and Firefox are not supported.
+
+---
+
+## Security
+
+The Kadoa Chrome extension operates within the user’s active tab. Here is the complete list of requested permissions:
+
+- [activeTab](https://developer.chrome.com/docs/extensions/develop/concepts/activeTab): To read and modify the current webpage.
+- [storage](https://developer.chrome.com/docs/extensions/reference/api/storage#permissions): To store the entered API key in the browser’s local storage.
+- [scripting](https://developer.chrome.com/docs/extensions/reference/api/scripting): To render the extension UI when the user clicks the toolbar button.
+
+The Kadoa extension sends the following information to our servers:
+
+- User API key: For authentication.
+- Active tab URL and content: For processing and extracting selected data.
+
+The source code is not currently open source but is available for inspection upon request.
+
+---
+
+## Troubleshooting
+
+**The extension does not open.**
+
+This issue is most likely because the webpage has not yet finished loading. Please reload the page and wait until it is fully loaded.
+
+**Unable to change anything on a webpage after opening the Kadoa extension**
+
+Ensure the page has fully loaded and all elements you want to select are visible before clicking the Kadoa extension icon. This includes expanding any collapsed areas and closing any blocking pop-ups.
+
+**Unable to select the desired element because it is covered by nested elements**
+
+Select any nested element, then click the arrow icon to select its parent element.
+
+**The page reloads after closing the extension**
+
+This is an intended behavior. To make elements available for selection, Kadoa removes all event handlers from the page. The page is reloaded to restore these handlers.
