@@ -2,5 +2,61 @@
 title: Chrome extension
 ---
 
-...
+Kadoa Chrome extension is a new way for Kadoa users to configure their workflows.
 
+<video controls className="w-full aspect-video" src="/images/extension-demo.mp4" ></video>
+
+- Navigate to the webpage with data to extract
+- Open the extension
+- Choose if you want to extract a single object or multiple objects with identical structure
+- Select the data
+- Review and refine suggested schema
+- Your new workflow is ready.
+
+<Note>The extension is currently pending Chrome Web Store review. Once it's published, the installation link will appear on this page.</Note>
+
+To use Kadoa Chrome extension, you need to be logged in to your Kadoa account.
+Log in or sign up here: https://www.kadoa.com/auth
+
+On first launch, you will need to enter your API key.
+Copy it here: https://www.kadoa.com/account
+
+---
+
+## Single object vs. multiple objects
+
+When you select a single object, Kadoa will treat the entire selection as a single element:
+
+![Screenshot](/images/extension-single-object.png)
+
+When you select multiple objects, the extracted data will contain a list of elements with identical structure:
+
+![Screenshot](/images/extension-multiple-objects.png)
+
+---
+
+## Compatibility
+
+The Kadoa extension is compatible with recent versions of Google Chrome browser and Chromium-based browsers (Vivaldi, Brave, etc).
+
+Safari and Firefox are currently not supported.
+
+---
+
+## Troubleshooting
+
+**The extension does not open.**
+
+This is most likely because the webpage has not yet finished loading. Please reload the page and wait until it’s fully loaded.
+
+**I cannot change anything on a webpage after I opened the Kadoa extension.**
+
+Before clicking the Kadoa extension icon, make sure that the page has finished loading and all elements you want to select are visible (e.g. expand the collapsed areas, close any blocking popups, etc).
+
+**I cannot select the element I need, it’s covered by nested elements.**
+
+Select any nested element, then click ↖ icon to select its parent element.
+
+**The page reloads after I close the Kadoa extension.**
+
+This is an intended behavior. To make elements available for selection, Kadoa removes all event handlers from the page. To restore them, the page is reloaded.
