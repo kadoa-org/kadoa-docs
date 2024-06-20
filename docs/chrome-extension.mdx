@@ -43,6 +43,23 @@ Safari and Firefox are currently not supported.
 
 ---
 
+## Security
+
+The Kadoa Chrome extension operates within the user’s active tab. Here’s the complete list of requested permissions:
+
+- [activeTab](https://developer.chrome.com/docs/extensions/develop/concepts/activeTab) - to read and modify the current web page.
+- [storage](https://developer.chrome.com/docs/extensions/reference/api/storage#permissions) - to persist the entered API key in the browser’s local storage.
+- [scripting](https://developer.chrome.com/docs/extensions/reference/api/scripting) - to render the extension UI when the user clicks the toolbar button.
+
+The information that the Kadoa extension sends to our servers includes:
+
+- User API key - for authentication.
+- Active tab URL and content - for processing and extracting selected data.
+
+The source code is not currently open source but is available for inspection upon request.
+
+---
+
 ## Troubleshooting
 
 **The extension does not open.**
