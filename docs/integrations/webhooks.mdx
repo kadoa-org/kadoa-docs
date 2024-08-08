@@ -22,7 +22,7 @@ To subscribe to Kadoa webhook events, follow these steps:
 
 Replace `"https://your-webhook-url.com/kadoa-events"` with the URL where you want to receive the webhook events.
 
-The `events` array should contain the list of events you want to subscribe to. You can fetch the list of available events by making a GET request to the [events endpoint](/api-reference/webhook-management/subscribe-to-webhook-events).
+The `events` array should contain the list of events you want to subscribe to. You can fetch the list of available events by making a GET request to the [events endpoint](/api-reference/webhooks/list-all-webhook-event-subscriptions).
 
 ## Handling Webhook Events
 
@@ -46,7 +46,7 @@ In this example, when a POST request is received at the `/kadoa-events` endpoint
 
 ## Unsubscribing from Webhook Events
 
-To unsubscribe from webhook events, make a DELETE request to the [unsubscribe endpoint](/api-reference/webhook-management/unsubscribe-from-webhook-events), using the ID of the subscription you want to remove.
+To unsubscribe from webhook events, make a DELETE request to the [unsubscribe endpoint](/api-reference/webhooks/unsubscribe-from-webhook-events), using the ID of the subscription you want to remove.
 
 ## Best Practices
 
