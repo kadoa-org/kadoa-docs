@@ -4,25 +4,30 @@ title: Credits
 
 ## How do Kadoa credits work?
 
-Here is the breakdown of all costs associated with a data workflow:
+Here’s a detailed breakdown of the costs associated with running a data workflow:
 
 ### Standard Mode
 
 | Action                       | Cost          |
 | ---------------------------- | ------------- |
-| Minimum charge per run       | 100 credits   |
-| Extracting a data row        | 1 credit      |
-| Extracting a details page    | 10 credits    |
+| Minimum charge per run       | 10 credits    |
+| Extracting a data row        | 2 credits     |
 
-For example, if your workflow extracts 20 data rows and their detail pages, the total cost for one run would be:
+What is a data row?
 
-> 20 (rows) * 10 (credits per detail page) = 200 credits
+A data row refers to a single row of results in the data table visible on your Kadoa dashboard.
 
-If you extract 50 rows without detail pages:
+If your workflow extracts 100 data rows, the total cost for one run would be:
 
-> 50 (rows) * 1 (credit per row) = 50 credits
+> 100 (result rows) * 2 = 200 credits
 
-However, since the total is less than the base cost, you'll be charged the minimum of 100 credits.
+If your workflow extracts 20 data rows:
+
+> 20 (result rows) * 2 = 40 credits
+
+If your workflow extracts only 2 data rows:
+
+> 2 (result rows) * 2 = 4 credits => 10 credits (billed at the minimum run cost of 10 credits)
 
 ### Adhoc Mode
 
