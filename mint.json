@@ -39,6 +39,7 @@
         "docs/data-schemas",
         "docs/credits",
         "docs/monitoring",
+        "docs/advanced-workflows",
         "docs/chrome-extension",
         {
           "group": "Integrations",
