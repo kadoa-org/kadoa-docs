@@ -11,6 +11,11 @@
       "group": {
         "kind": "build",
         "isDefault": true
+      },
+      "presentation": {
+        "focus": false,
+        "showReuseMessage": false,
+        "close": true
       }
     }
   ]
