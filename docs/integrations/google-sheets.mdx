@@ -28,39 +28,64 @@ function fetchDataFromKadoa() {
   var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
   var workflowId = 'YOUR_WORKFLOW_ID'; // Add Kadoa workflow ID
   var apiKey = 'YOUR_API_KEY'; // Add Kadoa API key
-  var url = `https://api.kadoa.com/v3/workflows/${workflowId}/data`;
+  var limit = 50; // Choose record limit
+  var page = 1; // Starting page
+  var baseUrl = `https://api.kadoa.com/v4/workflows/${workflowId}/data`;
   var headers = {
     "x-api-key": apiKey
   };
 
   var options = {
     method: "get",
-    headers: headers
+    headers: headers,
   };
 
-  var response = UrlFetchApp.fetch(url, options);
-  var data = JSON.parse(response.getContentText());
+  var allData = [];
 
-  // Get column headers dynamically
-  var headers = [];
-  if (data.length > 0) {
-    headers = Object.keys(data[0].data[0]);
+  do {
+    var url = `${baseUrl}?limit=${limit}&page=${page}`;
+    var response = UrlFetchApp.fetch(url, options);
+    var responseData = JSON.parse(response.getContentText());
+
+    // Extract the data array from the response
+    var data = responseData.data;
+    var pagination = responseData.pagination;
+
+    if (data.length === 0) {
+      Logger.log("No data found.");
+      break;
+    }
+
+    // Add current page data to allData array
+    allData = allData.concat(data);
+
+    // Check if there are more pages
+    page++;
+  } while (page <= pagination.totalPages);
+
+  if (allData.length === 0) {
+    Logger.log("No data found across all pages.");
+    return;
   }
+
+  // Get column headers dynamically from the first object in the data array
+  var headers = Object.keys(allData[0]);
 
   // Write headers to the sheet
   sheet.getRange(1, 1, 1, headers.length).setValues([headers]);
 
   // Write data to the sheet
   var rowData = [];
-  data.forEach(function (item) {
+  allData.forEach(function (item) {
     var row = [];
-    Object.keys(item.data[0]).forEach(function (key) {
-      row.push(item.data[0][key]);
+    headers.forEach(function (header) {
+      row.push(item[header] || ""); // Add a fallback if some data is missing
     });
     rowData.push(row);
   });
 
-  sheet.getRange(sheet.getLastRow() + 1, 1, rowData.length, rowData[0].length).setValues(rowData);
+  // Write the data starting from the second row
+  sheet.getRange(2, 1, rowData.length, headers.length).setValues(rowData);
 }
 ```
 
