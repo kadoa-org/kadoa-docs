@@ -47,9 +47,14 @@ The Kadoa extension is compatible with recent versions of Google Chrome and othe
 
 The Kadoa Chrome extension operates within the user’s active tab. Here is the complete list of requested permissions:
 
-- [activeTab](https://developer.chrome.com/docs/extensions/develop/concepts/activeTab): To read and modify the current webpage.
-- [storage](https://developer.chrome.com/docs/extensions/reference/api/storage#permissions): To store the entered API key in the browser’s local storage.
-- [scripting](https://developer.chrome.com/docs/extensions/reference/api/scripting): To render the extension UI when the user clicks the toolbar button.
+- [activeTab](https://developer.chrome.com/docs/extensions/develop/concepts/activeTab): Allows the extension to record interactions (e.g., clicks, key presses) and select elements within the active tab.
+- [storage](https://developer.chrome.com/docs/extensions/reference/api/storage#permissions): To use Kadoa extension, user needs to be logged in to their Kadoa account. API key is used for auth, and is stored in local storage to persist between sessions.
+- [scripting](https://developer.chrome.com/docs/extensions/reference/api/scripting): Supports rendering the extension UI when the user clicks the toolbar button.
+- [cookies](https://developer.chrome.com/docs/extensions/reference/api/cookies), in combination with host_permissions `["*://*.kadoa.com/*"]` : Allows the extension to read the team ID cookie, set by the Kadoa web app and scoped to the [kadoa.com](http://kadoa.com/) domain, to determine the active workspace.
+- [browsingData](https://developer.chrome.com/docs/extensions/reference/api/browsingData): Required to clear the current tab’s cache (via `chrome.browsingData.removeCache`) for accurate click event detection.
+- [sidePanel](https://developer.chrome.com/docs/extensions/reference/api/sidePanel): Utilizes Chrome’s Side Panel API for the extension’s UI.
+- [tabs](https://developer.chrome.com/docs/extensions/reference/api/tabs): Listens to tab-related events, such as closing the side panel when the user switches tabs.
+- [webNavigation](https://developer.chrome.com/docs/extensions/reference/api/webNavigation): Detects when the user reloads the current page while the extension is active.
 
 The Kadoa extension sends the following information to our servers:
 
