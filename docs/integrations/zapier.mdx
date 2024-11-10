@@ -1,0 +1,70 @@
+---
+title: Zapier Integration
+---
+
+## Overview
+
+Kadoa's Zapier integration allows you to automatically send workflow data to your favorite apps like Airtable, Google Sheets, and Notion. The integration works by regularly polling Kadoa to check for new data.
+
+## Prerequisites
+
+- A Kadoa account
+- A Zapier account
+- Access to your destination apps (Airtable, Google Sheets, Notion, etc.)
+
+## Setup Process
+
+### 1. Create a New Zap
+
+1. Log into your Zapier account
+2. Click "Create Zap"
+3. Search for "Kadoa" in the trigger app search
+
+<img src="/images/zapier/step-1.png" width="400" />
+
+### 2. Configure the Kadoa Trigger
+
+1. Select "getWorkflowData" as your trigger
+2. Follow the three-step configuration process:
+   - Setup: Connect your Kadoa account
+   - Configure: Set your workflow details
+   - Test: Verify the connection works
+
+### 3. Select Your Workflow
+
+<img src="/images/zapier/step-2.png" width="400" />
+
+1. In the Configure section, you'll find a "Workflow ID" field
+2. Click to select from your available workflows
+3. Choose from the list of your existing workflows
+4. Each workflow displays with its unique identifier
+
+### 4. Understanding Data Polling
+
+- Zapier polls Kadoa every 15 minutes or less depending on your plan
+- Each record includes the original pull date
+
+## Setting Up Actions
+
+After Kadoa triggers with new data, you can:
+
+1. Add actions for your destination apps (Airtable, Google Sheets, Notion, etc.)
+2. Map Kadoa data fields to your destination fields
+3. Add formatting steps or filters if needed
+4. Test your complete workflow
+
+## Troubleshooting
+
+If you encounter issues:
+
+- Verify your workflow ID is correct
+- Check your Zapier task history for errors
+- Confirm your destination app connections
+- Review polling intervals based on your Zapier plan
+
+## Next Steps
+
+1. Configure your destination app actions
+2. Set up any necessary data transformations
+3. Test the complete workflow
+4. Turn on your Zap and monitor performance
