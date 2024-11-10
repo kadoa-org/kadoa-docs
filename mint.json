@@ -44,6 +44,7 @@
         {
           "group": "Integrations",
           "pages": [
+            "docs/integrations/zapier",
             "docs/integrations/google-sheets",
             "docs/integrations/webhooks"
           ]
