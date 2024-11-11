@@ -7,8 +7,8 @@ description: ""
 
 Every workflow at Kadoa needs a schema. It tells Kadoa:
 
-- what **entity** to look for in source data (such as products, jobs, news)
-- what **fields** to extract for the selected entity (such as title, price, description)
+* what **entity** to look for in source data (such as products, jobs, news)
+* what **fields** to extract for the selected entity (such as title, price, description)
 
 What if you need the same schema for many workflows? The answer is **templates**.
 
@@ -18,32 +18,36 @@ Kadoa offers two ways to create and manage templates:
 
 ### 1. Create a template from scratch
 
-- [Create a new workflow](https://kadoa.com/add) using Auto-detect
-- Configure the workflow schema
-- Go to [My Templates](https://www.kadoa.com/my-templates) tab on your dashboard and click 'Add New Template.' You can now reuse a template from an existing workflow. Note: This option is currently not available for workflows that already use a pre-defined template.
-- Give your template a name and description
-- That's it! You can now create workflows with this template, and the data will be automatically extracted and transformed into your desired format, regardless of the source.
+* [Create a new workflow](https://kadoa.com/add) using Auto-detect
+* Configure the workflow schema
+* Go to [My Templates](https://www.kadoa.com/my-templates) tab on your dashboard and click 'Add New Template.' You can now reuse a template from an existing workflow. Note: This option is currently not available for workflows that already use a pre-defined template.
+* Give your template a name and description
+* That's it! You can now create workflows with this template, and the data will be automatically extracted and transformed into your desired format, regardless of the source.
+* Note: you can also do this in /dashboard or /workflow/\[id]
+
+![](images/save-template.png)
 
 ### 2. Customize a pre-defined template
 
-- Navigate to [My Templates](https://www.kadoa.com/my-templates) page on your dashboard
-- Click "Add new template"
-- Choose a pre-defined template as a starting point, based on your use case (e.g., products, jobs, news)
-- Customize the template by adding, removing, or modifying fields
-- Save your customized template
+* Navigate to [My Templates](https://www.kadoa.com/my-templates) page on your dashboard
+* Click "Add new template"
+* Choose a pre-defined template as a starting point, based on your use case (e.g., products, jobs, news)
+* Customize the template by adding, removing, or modifying fields
+* Save your customized template
 
 ## Using your templates
 
 When you [create a new workflow](https://kadoa.com/add), you can choose to use one of your templates.
 
 ## Ready-made templates
+
 Kadoa provides [ready-made templates](https://www.kadoa.com/templates) for popular web sources. These templates come with a set of standard fields that Kadoa will extract, but you can still customize them based on your specific needs.
 
 There are also **generic** templates, not limited to any specific source:
 
-- [job postings](#job-postings)
-- [ecommerce products](#ecommerce)
-- [news articles](#news-article)
+* [job postings](#job-postings)
+* [ecommerce products](#ecommerce)
+* [news articles](#news-article)
 
 More to come soon!
 
@@ -62,35 +66,35 @@ When you [create a new workflow](https://www.kadoa.com/add) using this template,
 | jobLocation            | Structured location data of the job including city, country code, and postal code | `{"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": "San Francisco", "addressCountry": "US", "postalCode": "94103"}}`            |
 | baseSalary             | Salary range for the job, including currency and timeframe                        | `{"@type": "MonetaryAmount", "currency": "USD", "value": {"minValue": 100000, "maxValue": 120000, "unitText": "ANNUALLY", "@type": "QuantitativeValue"}}` |
 | workHours              | Typical working hours for the job                                                 | 9am to 5pm, Monday to Friday                                                                                                                              |
-| jobBenefits            | Array of benefits offered by the company                                          | \["Health insurance", "Retirement plan"\]                                                                                                                 |
-| qualifications         | Array of required qualifications other than work experience                       | \["Bachelor's degree in Computer Science", "Strong problem-solving skills"\]                                                                              |
-| experienceRequirements | Array of work experience requirements                                             | \["At least 5 years of experience in software development"\]                                                                                              |
+| jobBenefits            | Array of benefits offered by the company                                          | \["Health insurance", "Retirement plan"]                                                                                                                  |
+| qualifications         | Array of required qualifications other than work experience                       | \["Bachelor's degree in Computer Science", "Strong problem-solving skills"]                                                                               |
+| experienceRequirements | Array of work experience requirements                                             | \["At least 5 years of experience in software development"]                                                                                               |
 | recruiterEmail         | Email address of the recruiter or hiring manager                                  | `recruiter@example.com`                                                                                                                                   |
 | occupationalCategory   | The job category as per a predefined classification                               | Software and Web Developers                                                                                                                               |
 | applicationDeadline    | The deadline for job application submissions, formatted as YYYY:MM:DD:hh:mm:ss    | 2024:01:15:23:59:59                                                                                                                                       |
 | language               | The primary language of the job posting                                           | English                                                                                                                                                   |
 | logo                   | URL to the company's logo                                                         | https[]()://example.com/logo.png                                                                                                                          |
-| employmentType         | Type of employment offered in the job posting (e.g., FULL_TIME, PART_TIME)        | FULL_TIME                                                                                                                                                 |
+| employmentType         | Type of employment offered in the job posting (e.g., FULL\_TIME, PART\_TIME)      | FULL\_TIME                                                                                                                                                |
 | id                     | Unique identifier for the job posting                                             | abc123xyz                                                                                                                                                 |
 
 ### Ecommerce
 
 When you [create a new workflow](https://www.kadoa.com/add) using this template, Kadoa will extract the following common fields:
 
-| Name          | Description                                   | Example                                                                                                                                 |
-| ------------- | --------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------- |
-| link          | URL link to the product page                  | https[]()://example.com/product/samsung-galaxy-s23                                                                                      |
-| name          | Name of the product                           | Samsung Galaxy S23 256GB                                                                                                                |
-| brand         | Brand name of the product                     | Samsung                                                                                                                                 |
-| price         | Price of the product                          | 999.99                                                                                                                                  |
-| priceCurrency | Currency code for the product price           | USD                                                                                                                                     |
-| specs         | Technical specifications of the product       | `{"Processor": "Snapdragon 8 Gen 1", "RAM": "8GB"}`                                                                                     |
-| description   | Full product description                      | The latest Samsung Galaxy S23 comes with a Snapdragon 8 Gen 1 processor, 8GB RAM, and a 256GB storage.                                  |
-| sku           | Stock Keeping Unit identifier for the product | SGS23-256GB-BLK                                                                                                                         |
-| gtin          | Global Trade Item Number for the product      | 00012345678905                                                                                                                          |
-| ean           | European Article Number for the product       | 1234567890123                                                                                                                           |
-| images        | Array of image URLs of the product            | \["https://example.com/images/product/samsung-galaxy-s23-front.jpg", "https://example.com/images/product/samsung-galaxy-s23-back.jpg"\] |
-| reviews       | Number of reviews for the product             | 102                                                                                                                                     |
+| Name          | Description                                   | Example                                                                                                                                |
+| ------------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
+| link          | URL link to the product page                  | https[]()://example.com/product/samsung-galaxy-s23                                                                                     |
+| name          | Name of the product                           | Samsung Galaxy S23 256GB                                                                                                               |
+| brand         | Brand name of the product                     | Samsung                                                                                                                                |
+| price         | Price of the product                          | 999.99                                                                                                                                 |
+| priceCurrency | Currency code for the product price           | USD                                                                                                                                    |
+| specs         | Technical specifications of the product       | `{"Processor": "Snapdragon 8 Gen 1", "RAM": "8GB"}`                                                                                    |
+| description   | Full product description                      | The latest Samsung Galaxy S23 comes with a Snapdragon 8 Gen 1 processor, 8GB RAM, and a 256GB storage.                                 |
+| sku           | Stock Keeping Unit identifier for the product | SGS23-256GB-BLK                                                                                                                        |
+| gtin          | Global Trade Item Number for the product      | 00012345678905                                                                                                                         |
+| ean           | European Article Number for the product       | 1234567890123                                                                                                                          |
+| images        | Array of image URLs of the product            | \["https://example.com/images/product/samsung-galaxy-s23-front.jpg", "https://example.com/images/product/samsung-galaxy-s23-back.jpg"] |
+| reviews       | Number of reviews for the product             | 102                                                                                                                                    |
 
 ### News article
 
