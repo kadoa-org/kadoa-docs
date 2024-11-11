@@ -15,24 +15,21 @@ The Kadoa Advanced Workflow API provides endpoints to manage workflows efficient
 - Update an existing workflow
 - Delete a workflow
 
+## Create an Advanced Workflow
+Creation of new advanced workflows is currently only possible via our Chrome Extension or our Workflow Builder in the Kadoa Dashboard.
+Please refer to the [Setup Guide](/docs/advanced-workflows/setup) for more information.
+
+
 ## Fetch Workflow Data
 
 Use the following endpoint to retrieve details about a specific workflow:
 
 **GET** `/v4/workflows/{workflowId}`
 
-### Request Parameters
+[See API Reference](/api-reference/workflows/get-workflow-data-by-its-id)
 
-- **workflowId** (string, required): The ID of the workflow to fetch.
-- **Authorization** (header, required): API key for authorization.
 
-### Example Request
-```bash
-curl -X GET "https://api.kadoa.com/v4/workflows/123456789" \
-  -H "x-api-key: YOUR_API_KEY"
-```
 
-### Response
 The response will include the result data and some additional metadata about the workflow run.
 
 ```
@@ -41,9 +38,7 @@ The response will include the result data and some additional metadata about the
   "runId": "987654321",
   "executedAt": "2024-11-07T07:24:14.317Z",
   "data": [
-    {
-     ...
-    }
+    ...
   ],
   "pagination": {
     "totalCount": 1,
@@ -85,7 +80,40 @@ The response will include the workflow configuration.
   "isAdvanced": true,
   "startedAt": "2024-11-07T11:40:21.237Z",
   "steps": [
-    ...
+    {
+      "id": "step_1",
+      "version": 1,
+      "name": "CSVLoader",
+      "type": "input",
+      "modifiedAt": "2024-11-07T11:37:50.626Z",
+      "params": {
+        "url": "mycsv.csv",
+        "outputFields": [
+          "url"
+        ],
+        "outputType": "application/pdf",
+        "maxRecords": 100
+      }
+    },
+    {
+      "id": "step_2",
+      "name": "ExtractPDF",
+      "type": "action",
+      "inputs": [
+        {
+          "id": "step_1"
+        }
+      ],
+      "params": {
+        "schema": [
+          {
+            "name": "revenue",
+            "example": "$123121",
+            "description": "Annual revenue number listed at the top of the document"
+          }
+        ]
+      }
+    }
   ]
 }
 ```
@@ -102,7 +130,12 @@ To update the steps in an existing workflow, use the following endpoint:
 
 - **workflowId** (string, required): The ID of the workflow to update.
 - **Authorization** (header, required): API key for authorization.
-- **steps** (array, required): An array containing the steps to be added or updated.
+- **steps** (array body, required): An array containing the all steps.
+
+<Note>
+    This endpoint requires the complete array of workflow steps. Partial updates are not supported yet - you must include all existing steps even if you're only modifying one.
+</Note>
+
 
 ### Example Request
 ```bash
@@ -113,16 +146,41 @@ curl -X POST "https://api.kadoa.com/v4/workflows/123456789/steps" \
     "steps": [
       {
         "id": "step_1",
-        "name": "ExtractData",
+        "version": 1,
+        "name": "CSVLoader",
+        "type": "input",
+        "modifiedAt": "2024-11-07T11:37:50.626Z",
+        "params": {
+          "url": "mycsv.csv",
+          "outputFields": [
+            "url"
+          ],
+          "outputType": "application/pdf",
+          "maxRecords": 100
+        }
+      },
+      {
+        "id": "step_2",
+        "name": "ExtractPDF",
         "type": "action",
+        "inputs": [
+          {
+            "id": "step_1"
+          }
+        ],
         "params": {
           "schema": [
-          {
-            "name": "revenue",
-            "example": "$123121",
-            "description": "Annual revenue number listed at the top of the document",
-          }
-        ]
+            {
+              "name": "revenue",
+              "example": "$123121",
+              "description": "Annual revenue number listed at the top of the document"
+            },
+            {
+              "name": "costs",
+              "example": "$999",
+              "description": "Annual costs listed at the top of the document"
+            }
+          ]
         }
       }
     ]
@@ -138,17 +196,4 @@ To delete a workflow, use the following endpoint:
 
 **DELETE** `/v4/workflows/{workflowId}`
 
-### Request Parameters
-
-- **workflowId** (string, required): The ID of the workflow to delete.
-- **Authorization** (header, required): API key for authorization.
-
-### Example Request
-```bash
-curl -X DELETE "https://api.kadoa.com/v4/workflows/123456789" \
-   -H "x-api-key: YOUR_API_KEY"
-```
-
-### Response
-The response will confirm that the workflow has been deleted successfully or provide an error message if the deletion was not possible.
-
+[See API Reference](/api-reference/workflows/delete-a-specific-workflow)
