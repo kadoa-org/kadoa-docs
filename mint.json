@@ -48,7 +48,15 @@
             "docs/integrations/google-sheets",
             "docs/integrations/webhooks"
           ]
+        },
+        {
+          "group": "Advanced Workflows",
+          "pages": [
+            "docs/advanced-workflows/setup",
+            "docs/advanced-workflows/api"
+          ]
         }
+
       ]
     },
     {
@@ -85,7 +93,7 @@
         {
           "group": "Adhoc",
           "pages": [
-            "api-reference/adhoc/run-an-synchronous-adhoc-extraction-with-a-schema"
+            "api-reference/adhoc/run-adhoc-extraction"
           ]
         },
         {

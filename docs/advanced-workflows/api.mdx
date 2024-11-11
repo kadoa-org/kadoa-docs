@@ -1,0 +1,154 @@
+---
+title: API Guide
+---
+
+<Note>
+  This feature is currently only available in our Enterprise plan. [Contact
+  us](https://www.kadoa.com/contact) if you'd like to learn more or request
+  access.
+</Note>
+
+The Kadoa Advanced Workflow API provides endpoints to manage workflows efficiently. In this guide, you'll learn how to:
+
+- Fetch workflow data
+- Fetch workflow configuration
+- Update an existing workflow
+- Delete a workflow
+
+## Fetch Workflow Data
+
+Use the following endpoint to retrieve details about a specific workflow:
+
+**GET** `/v4/workflows/{workflowId}`
+
+### Request Parameters
+
+- **workflowId** (string, required): The ID of the workflow to fetch.
+- **Authorization** (header, required): API key for authorization.
+
+### Example Request
+```bash
+curl -X GET "https://api.kadoa.com/v4/workflows/123456789" \
+  -H "x-api-key: YOUR_API_KEY"
+```
+
+### Response
+The response will include the result data and some additional metadata about the workflow run.
+
+```
+{
+  "workflowId": "123456789",
+  "runId": "987654321",
+  "executedAt": "2024-11-07T07:24:14.317Z",
+  "data": [
+    {
+     ...
+    }
+  ],
+  "pagination": {
+    "totalCount": 1,
+    "page": 1,
+    "totalPages": 1,
+    "limit": 25
+  }
+}
+```
+
+## Fetch Workflow Configuration
+Use the following endpoint to retrieve the configuration of an advanced workflow:
+
+**GET** `/v4/advanced-workflows/{workflowId}`
+
+### Request Parameters
+
+- **workflowId** (string, required): The ID of the workflow to fetch.
+- **Authorization** (header, required): API key for authorization.
+
+### Example Request
+```bash
+curl -X GET "https://api.kadoa.com/v4/advanced-workflows/123456789" \
+  -H "x-api-key: YOUR_API_KEY"
+```
+
+### Response
+The response will include the workflow configuration.
+
+```
+{
+  "_id": "672ca6901bbb07110098eb1a",
+  "name": "Test",
+  "limit": 1,
+  "state": "RUNNING",
+  "userId": "a0198564-fb30-4186-ab69-27547c0552a1",
+  "updateInterval": "only once",
+  "createdAt": "2024-11-07T11:40:21.237Z",
+  "isAdvanced": true,
+  "startedAt": "2024-11-07T11:40:21.237Z",
+  "steps": [
+    ...
+  ]
+}
+```
+
+
+
+## Update Workflow Steps
+
+To update the steps in an existing workflow, use the following endpoint:
+
+**POST** `/v4/advanced-workflows/{workflowId}/steps`
+
+### Request Parameters
+
+- **workflowId** (string, required): The ID of the workflow to update.
+- **Authorization** (header, required): API key for authorization.
+- **steps** (array, required): An array containing the steps to be added or updated.
+
+### Example Request
+```bash
+curl -X POST "https://api.kadoa.com/v4/workflows/123456789/steps" \
+  -H "x-api-key: YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "steps": [
+      {
+        "id": "step_1",
+        "name": "ExtractData",
+        "type": "action",
+        "params": {
+          "schema": [
+          {
+            "name": "revenue",
+            "example": "$123121",
+            "description": "Annual revenue number listed at the top of the document",
+          }
+        ]
+        }
+      }
+    ]
+  }'
+```
+
+### Response
+The response will indicate whether the steps were successfully updated, along with the new version of the workflow.
+
+## Delete Workflow
+
+To delete a workflow, use the following endpoint:
+
+**DELETE** `/v4/workflows/{workflowId}`
+
+### Request Parameters
+
+- **workflowId** (string, required): The ID of the workflow to delete.
+- **Authorization** (header, required): API key for authorization.
+
+### Example Request
+```bash
+curl -X DELETE "https://api.kadoa.com/v4/workflows/123456789" \
+   -H "x-api-key: YOUR_API_KEY"
+```
+
+### Response
+The response will confirm that the workflow has been deleted successfully or provide an error message if the deletion was not possible.
+
