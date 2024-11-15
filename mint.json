@@ -39,6 +39,7 @@
         "docs/data-schemas",
         "docs/credits",
         "docs/monitoring",
+        "docs/access-control",
         "docs/chrome-extension",
         {
           "group": "Integrations",
