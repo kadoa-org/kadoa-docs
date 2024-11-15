@@ -7,6 +7,8 @@ description: "Understanding the roles and permissions for Members and Admins in 
 
 In the Kadoa ecosystem, users can have two primary roles: **Member** and **Admin**. Each role comes with different levels of access to workflows and data management. The access levels are defined based on privileges granted for certain actions such as reading, creating, updating, or deleting workflows.
 
+The permissions for each action are determined based on the user's role in the team.
+
 ### Member Role
 A **Member** has basic privileges that allow them to interact with workflows but with limited control over system configuration or team settings.
 
@@ -28,11 +30,6 @@ An **Admin** has higher privileges compared to a Member. Admins have full access
   - Can change one user role within a team the admin belongs to
 
 > A team owner has privileges equivalent to an admin, the only difference is that only a team owner can transfer team ownership to another user in the same team.
-
-## Permission Management
-
-The permissions for each action are determined based on the user's role in the team. The following code shows how permissions are evaluated based on whether the user is a Member or Admin
-
 
 ## API integration
 
