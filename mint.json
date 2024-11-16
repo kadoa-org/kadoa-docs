@@ -66,40 +66,40 @@
         {
           "group": "Workflows",
           "pages": [
-            "api-reference/workflows/get-workflow-data-by-its-id",
-            "api-reference/workflows/retrieve-an-overview-of-the-users-workflows",
+            "api-reference/workflows/get-workflow-data-by-id",
+            "api-reference/workflows/get-all-workflows",
             "api-reference/workflows/get-workflow-by-id",
             "api-reference/workflows/create-a-new-workflow",
-            "api-reference/workflows/run-a-specific-workflow",
-            "api-reference/workflows/schedule-a-specific-workflow",
-            "api-reference/workflows/change-the-limit-for-a-specific-workflow",
-            "api-reference/workflows/update-schedule-and-metadata",
-            "api-reference/workflows/pause-a-specific-workflow",
-            "api-reference/workflows/delete-a-specific-workflow",
-            "api-reference/workflows/resume-a-specific-workflow",
-            "api-reference/workflows/retrieve-the-status-of-a-specific-workflow",
-            "api-reference/workflows/retrieve-the-workflow-run-history"
+            "api-reference/workflows/run-a-workflow",
+            "api-reference/workflows/schedule-a-workflow",
+            "api-reference/workflows/update-limit-for-a-workflow",
+            "api-reference/workflows/update-workflow-metadata",
+            "api-reference/workflows/pause-a-workflow",
+            "api-reference/workflows/delete-a-workflow",
+            "api-reference/workflows/resume-a-workflow",
+            "api-reference/workflows/get-the-workflow-history"
           ]
         },
         {
-          "group": "Schemas",
+          "group": "Templates",
           "pages": [
-            "api-reference/schemas/get-all-available-schemas",
-            "api-reference/schemas/get-schema-by-its-id",
-            "api-reference/schemas/delete-a-schema-by-its-id",
-            "api-reference/schemas/rename-a-schema-by-its-id"
+            "api-reference/templates/get-all-templates",
+            "api-reference/templates/get-template-by-id",
+            "api-reference/templates/delete-a-template-by-id",
+            "api-reference/templates/rename-a-template-by-id"
           ]
+
         },
         {
           "group": "Adhoc",
           "pages": [
-            "api-reference/adhoc/run-adhoc-extraction"
+            "api-reference/adhoc/run-synchronous-extraction"
           ]
         },
         {
           "group": "Events",
           "pages": [
-            "api-reference/events/get-the-list-of-available-events-for-subscription"
+            "api-reference/events/get-the-list-of-available-webhook-events"
           ]
         },
         {
@@ -109,7 +109,15 @@
             "api-reference/webhooks/subscribe-to-webhook-events",
             "api-reference/webhooks/unsubscribe-from-webhook-events"
           ]
+        },
+        {
+          "group": "Advanced Workflows",
+          "pages": [
+            "api-reference/advanced-workflows/get-all-available-workflow-operators",
+            "api-reference/advanced-workflows/update-workflow-steps"
+          ]
         }
+
       ]
     }
   ],
