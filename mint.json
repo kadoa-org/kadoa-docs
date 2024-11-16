@@ -39,8 +39,14 @@
         "docs/data-schemas",
         "docs/credits",
         "docs/monitoring",
-        "docs/access-control",
         "docs/chrome-extension",
+        {
+          "group": "Workspaces",
+          "pages": [
+            "docs/workspaces/overview",
+            "docs/workspaces/sso"
+          ]
+        },
         {
           "group": "Integrations",
           "pages": [
