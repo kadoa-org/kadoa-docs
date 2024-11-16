@@ -26,7 +26,7 @@ Use the following endpoint to retrieve details about a specific workflow:
 
 **GET** `/v4/workflows/{workflowId}/data`
 
-[See API Reference](/api-reference/workflows/get-workflow-data-by-its-id)
+[See API Reference](/api-reference/workflows/get-workflow-data-by-id)
 
 
 
@@ -187,7 +187,7 @@ curl -X POST "https://api.kadoa.com/v4/workflows/123456789/steps" \
   }'
 ```
 
-You can now test the updated workflow by using the [/run](/api-reference/workflows/run-a-specific-workflow) endpoint and fetch the result data.
+You can now test the updated workflow by using the [/run](/api-reference/workflows/run-a-workflow) endpoint and fetch the result data.
 
 ### Response
 The response will indicate whether the steps were successfully updated, along with the new version of the workflow.
@@ -198,4 +198,4 @@ To delete a workflow, use the following endpoint:
 
 **DELETE** `/v4/workflows/{workflowId}`
 
-[See API Reference](/api-reference/workflows/delete-a-specific-workflow)
+[See API Reference](/api-reference/workflows/delete-a-workflow)
