@@ -52,7 +52,7 @@
         {
           "group": "Advanced Workflows",
           "pages": [
-            "docs/advanced-workflows/setup",
+            "docs/advanced-workflows/introduction",
             "docs/advanced-workflows/api"
           ]
         }
