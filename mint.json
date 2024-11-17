@@ -87,6 +87,13 @@
           ]
         },
         {
+          "group": "Advanced Workflows",
+          "pages": [
+            "api-reference/advanced-workflows/get-all-available-workflow-operators",
+            "api-reference/advanced-workflows/update-workflow-steps"
+          ]
+        },
+        {
           "group": "Templates",
           "pages": [
             "api-reference/templates/get-all-templates",
@@ -114,13 +121,6 @@
             "api-reference/webhooks/list-all-webhook-event-subscriptions",
             "api-reference/webhooks/subscribe-to-webhook-events",
             "api-reference/webhooks/unsubscribe-from-webhook-events"
-          ]
-        },
-        {
-          "group": "Advanced Workflows",
-          "pages": [
-            "api-reference/advanced-workflows/get-all-available-workflow-operators",
-            "api-reference/advanced-workflows/update-workflow-steps"
           ]
         }
 
