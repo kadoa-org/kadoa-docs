@@ -70,6 +70,15 @@
       "pages": [
         "api-reference/introduction",
         {
+          "group": "Crawling",
+          "pages": [
+            "api-reference/crawling/start-crawling-session",
+            "api-reference/crawling/crawling-session-status",
+            "api-reference/crawling/get-crawled-pages",
+            "api-reference/crawling/get-crawled-page-meta"
+          ]
+        },
+        {
           "group": "Workflows",
           "pages": [
             "api-reference/workflows/get-workflow-data-by-id",
