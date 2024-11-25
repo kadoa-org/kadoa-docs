@@ -38,24 +38,34 @@ The permissions for each action are determined based on the user's role in the t
 ### Member Role
 A **Member** has basic privileges that allow them to interact with workflows but with limited control over system configuration or team settings.
 
-- **Permissions for Members:**
-  - Can **Read** workflows
-  - Can **Create** new workflows
-  - Can **Update** existing workflows
+**Permissions for Members:**
+  - Can **Read** team workflows
+  - Can **Create** new workflows in their team
+  - Can **Update** existing team workflows
   - Can **Delete** their own workflows
-  - Can **Execute** workflows
+  - Can **Execute** team workflows
 
 ### Admin Role
 An **Admin** has higher privileges compared to a Member. Admins have full access to manage workflows and data, as well as perform administrative tasks for the team.
 
-- **Permissions for Admins:**
-  - All **Member** permissions (Read, Create, Update, Delete, Execute)
-  - Can manage **team settings** and other users
-  - Can **Delete** or modify any workflow within the team
-  - Can customize and manage workflow **schemas and templates**
-  - Can change one user role within a team the admin belongs to
+**Permissions for Admins:**
+  - All **Member** permissions within their team
+  - Can manage **team settings** and team members
+  - Can **Delete** or modify any workflow within their team
+  - Can customize and manage workflow **schemas and templates** for their team
+  - Can change user roles within their team
+  - Team Owners can transfer team ownership to another team member
 
-> A team owner has privileges equivalent to an admin, the only difference is that only a team owner can transfer team ownership to another user in the same team.
+### Compliance Officer Role
+A **Compliance Officer** has read-only access for compliance and audit purposes.
+
+**Permissions for Compliance Officers:**
+ - Can **Read** workflows and execution logs
+ - Can access audit reports
+ - Cannot modify workflows or settings
+
+
+> Note: Each role's permissions are strictly limited to their assigned team's resources. Users cannot access or modify data from other teams within the organization.
 
 ## Managing API Keys
 
