@@ -62,7 +62,13 @@
             "docs/advanced-workflows/api"
           ]
         },
-        "docs/security"
+        "docs/security",
+        {
+          "group": "Guides",
+          "pages": [
+            "docs/guides/crawling"
+          ]
+        }
       ]
     },
     {
