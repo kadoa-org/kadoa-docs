@@ -12,7 +12,7 @@ Kadoa as an **API-first company**, ensures seamless integration by making core f
 - Initiate a crawling session
 - Check crawling session status
 - List crawled pages
-- Access pages as LLM ready format
+- Access Crawled Page Content
 
 ---
 
@@ -83,7 +83,7 @@ Sample Response:
 
 ```
 
-### Retrieve Crawled Pages
+### List Crawled Pages
 
 Access the crawled pages using the `/crawl/<sessionId>/pages` endpoint with pagination.
 
@@ -119,7 +119,7 @@ Sample Response:
 
 ### Access Crawled Page Content
 
-Retrieve the content of individual crawled pages in your preferred format using the `/crawl/<sessionId>/pages/<pageId>` endpoint.
+Use the /crawl/<sessionId>/pages/<pageId> endpoint to retrieve the content of individual crawled pages in your preferred format. The API can deliver the page payload directly in an LLM-ready format, such as markdown.
 
 ```
 GET https://api.kadoa.com/v4/crawl/<sessionId>/pages/<pageId>?format={html|md}
