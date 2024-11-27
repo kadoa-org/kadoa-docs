@@ -39,6 +39,7 @@
         "docs/data-schemas",
         "docs/credits",
         "docs/monitoring",
+        "docs/guides/crawling",
         "docs/chrome-extension",
         {
           "group": "Workspaces",
@@ -62,13 +63,7 @@
             "docs/advanced-workflows/api"
           ]
         },
-        "docs/security",
-        {
-          "group": "Guides",
-          "pages": [
-            "docs/guides/crawling"
-          ]
-        }
+        "docs/security"
       ]
     },
     {
