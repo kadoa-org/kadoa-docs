@@ -7,12 +7,12 @@ title: Crawling 101
 Web scraping and data extraction are crucial for transforming vast online datasets into formats suitable for large language models (LLMs). 
 
 
-Kadoa as an **API-first company**, ensures seamless integration by making core features accessible through robust API endpoints. This guide walks you through leveraging Kadoa's web crawling capabilities via its `/crawl` API endpoint. You’ll learn how to:
+Kadoa as an API-first company, ensures seamless integration by making core features accessible through robust API endpoints. This guide walks you through leveraging Kadoa's web crawling capabilities via its `/crawl` API endpoint. You’ll learn how to:
 
 - Initiate a crawling session
 - Check crawling session status
 - List crawled pages
-- Access Crawled Page Content
+- Access crawled page content
 
 ---
 
@@ -61,7 +61,7 @@ Configuration Notes:
   Adjust timeout, maxDepth, and maxPages to refine the crawling process.
 
 
-### Check Crawl status
+### Check crawl status
 
 Monitor the progress of your crawling session using the `/crawl/status/<sessionId>` endpoint.
 
@@ -83,7 +83,7 @@ Sample Response:
 
 ```
 
-### List Crawled Pages
+### List crawled pages
 
 Access the crawled pages using the `/crawl/<sessionId>/pages` endpoint with pagination.
 
@@ -117,7 +117,7 @@ Sample Response:
 
 ```
 
-### Access Crawled Page Content
+### Access crawled page content
 
 Use the `/crawl/<sessionId>/pages/<pageId>` endpoint to retrieve the content of individual crawled pages in your preferred format. The API can deliver the page payload directly in an LLM-ready format, such as markdown.
 
