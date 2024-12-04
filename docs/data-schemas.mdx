@@ -5,16 +5,24 @@ description: ""
 
 ## What is a schema?
 
-Every workflow at Kadoa needs a schema. It tells Kadoa:
+Every Kadoa workflow requires a data schema that defines:
+1. The **entity** to extract (e.g., products, jobs, news articles)
+2. The specific **fields** to capture (e.g., title, price, description)
+3. The **format** of the extracted data
 
-* what **entity** to look for in source data (such as products, jobs, news)
-* what **fields** to extract for the selected entity (such as title, price, description)
 
 What if you need the same schema for many workflows? The answer is **templates**.
 
+## What is a template?
+Templates allow you to:
+- Standardize data schemas across multiple sources
+- Save time by reusing workflow blueprints
+- Ensure consistency in your data structure
+
+
 ## How to create templates
 
-Kadoa offers two ways to create and manage templates:
+There are two ways to create and manage templates:
 
 ### 1. Create a template from scratch
 
@@ -27,7 +35,7 @@ Kadoa offers two ways to create and manage templates:
 
 ![Save Template](/images/save-template.png)
 
-### 2. Customize a pre-defined template
+### 2. Customize a pre-built template
 
 * Navigate to [My Templates](https://www.kadoa.com/my-templates) page on your dashboard
 * Click "Add new template"
@@ -39,76 +47,14 @@ Kadoa offers two ways to create and manage templates:
 
 When you [create a new workflow](https://kadoa.com/add), you can choose to use one of your templates.
 
-## Ready-made templates
+## Pre-built templates
 
-Kadoa provides [ready-made templates](https://www.kadoa.com/templates) for popular web sources. These templates come with a set of standard fields that Kadoa will extract, but you can still customize them based on your specific needs.
+Kadoa provides [prebuilt templates](https://www.kadoa.com/templates) for popular web sources and use cases. These templates come with a set of standard fields that Kadoa will extract, but you can still customize them based on your specific needs.
 
-There are also **generic** templates, not limited to any specific source:
+- Job Postings
+- E-commerce Products
+- News Articles
+- Company Information
+- Financial Data
 
-* [job postings](#job-postings)
-* [ecommerce products](#ecommerce)
-* [news articles](#news-article)
-
-More to come soon!
-
-### Job postings
-
-We offer a [dedicated API endpoint](https://services.kadoa.com/api-docs/) optimized for fetching structured job posting data.
-When you [create a new workflow](https://www.kadoa.com/add) using this template, Kadoa will extract the following common fields:
-
-| Name                   | Description                                                                       | Example                                                                                                                                                   |
-| ---------------------- | --------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| description            | Job description including roles, responsibilities, and company overview           | Responsible for developing and maintaining web applications...                                                                                            |
-| jobTitle               | The title of the job being posted                                                 | Senior Software Engineer                                                                                                                                  |
-| datePosted             | The date when the job was posted, formatted as YYYY:MM:DD:hh:mm:ss                | 2023:11:20:10:45:00                                                                                                                                       |
-| applyUrl               | URL where applicants can apply for the job                                        | https[]()://example.com/apply                                                                                                                             |
-| url                    | Direct URL to the job posting                                                     | https[]()://example.com/job-posting                                                                                                                       |
-| jobLocation            | Structured location data of the job including city, country code, and postal code | `{"@type": "Place", "address": {"@type": "PostalAddress", "addressLocality": "San Francisco", "addressCountry": "US", "postalCode": "94103"}}`            |
-| baseSalary             | Salary range for the job, including currency and timeframe                        | `{"@type": "MonetaryAmount", "currency": "USD", "value": {"minValue": 100000, "maxValue": 120000, "unitText": "ANNUALLY", "@type": "QuantitativeValue"}}` |
-| workHours              | Typical working hours for the job                                                 | 9am to 5pm, Monday to Friday                                                                                                                              |
-| jobBenefits            | Array of benefits offered by the company                                          | \["Health insurance", "Retirement plan"]                                                                                                                  |
-| qualifications         | Array of required qualifications other than work experience                       | \["Bachelor's degree in Computer Science", "Strong problem-solving skills"]                                                                               |
-| experienceRequirements | Array of work experience requirements                                             | \["At least 5 years of experience in software development"]                                                                                               |
-| recruiterEmail         | Email address of the recruiter or hiring manager                                  | `recruiter@example.com`                                                                                                                                   |
-| occupationalCategory   | The job category as per a predefined classification                               | Software and Web Developers                                                                                                                               |
-| applicationDeadline    | The deadline for job application submissions, formatted as YYYY:MM:DD:hh:mm:ss    | 2024:01:15:23:59:59                                                                                                                                       |
-| language               | The primary language of the job posting                                           | English                                                                                                                                                   |
-| logo                   | URL to the company's logo                                                         | https[]()://example.com/logo.png                                                                                                                          |
-| employmentType         | Type of employment offered in the job posting (e.g., FULL\_TIME, PART\_TIME)      | FULL\_TIME                                                                                                                                                |
-| id                     | Unique identifier for the job posting                                             | abc123xyz                                                                                                                                                 |
-
-### Ecommerce
-
-When you [create a new workflow](https://www.kadoa.com/add) using this template, Kadoa will extract the following common fields:
-
-| Name          | Description                                   | Example                                                                                                                                |
-| ------------- | --------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| link          | URL link to the product page                  | https[]()://example.com/product/samsung-galaxy-s23                                                                                     |
-| name          | Name of the product                           | Samsung Galaxy S23 256GB                                                                                                               |
-| brand         | Brand name of the product                     | Samsung                                                                                                                                |
-| price         | Price of the product                          | 999.99                                                                                                                                 |
-| priceCurrency | Currency code for the product price           | USD                                                                                                                                    |
-| specs         | Technical specifications of the product       | `{"Processor": "Snapdragon 8 Gen 1", "RAM": "8GB"}`                                                                                    |
-| description   | Full product description                      | The latest Samsung Galaxy S23 comes with a Snapdragon 8 Gen 1 processor, 8GB RAM, and a 256GB storage.                                 |
-| sku           | Stock Keeping Unit identifier for the product | SGS23-256GB-BLK                                                                                                                        |
-| gtin          | Global Trade Item Number for the product      | 00012345678905                                                                                                                         |
-| ean           | European Article Number for the product       | 1234567890123                                                                                                                          |
-| images        | Array of image URLs of the product            | \["https://example.com/images/product/samsung-galaxy-s23-front.jpg", "https://example.com/images/product/samsung-galaxy-s23-back.jpg"] |
-| reviews       | Number of reviews for the product             | 102                                                                                                                                    |
-
-### News article
-
-When you [create a new workflow](https://www.kadoa.com/add) using this template, Kadoa will extract the following common fields:
-
-| Name        | Description                                  | Example                                                        |
-| ----------- | -------------------------------------------- | -------------------------------------------------------------- |
-| title       | The title of the news article                | Reading news improves cognitive function                       |
-| fullText    | Full text of the article                     | This is a full article about something interesting - hopefully |
-| author      | Author of the job posting                    | John Doe                                                       |
-| datePosted  | The date when the news article was posted    | 2023:11:20:10:45:00                                            |
-| readTime    | Expected reading time for this article       | 24min                                                          |
-| language    | The primary language of the article          | EN                                                             |
-| dateScraped | The date when the news article was extracted | 2023:11:20:10:45:00                                            |
-| url         | Direct URL to the news article               | https[]()://example.com/news                                   |
-| scraperName | Name of the scraper from the dashboard       | News Site Name                                                 |
-| id          | Unique identifier for the news posting       | abc123xyz                                                      |
+Need a custom template? Contact our support team for assistance.
