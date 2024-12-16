@@ -98,6 +98,13 @@
           ]
         },
         {
+          "group": "Monitoring",
+          "pages": [
+              "api-reference/monitoring/get-all-changes",
+            "api-reference/monitoring/get-change-by-id"
+          ]
+        },
+        {
           "group": "Advanced Workflows",
           "pages": [
             "api-reference/advanced-workflows/get-all-available-workflow-operators",
