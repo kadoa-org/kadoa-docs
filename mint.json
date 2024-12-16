@@ -39,15 +39,9 @@
         "docs/data-schemas",
         "docs/credits",
         "docs/monitoring",
-        "docs/guides/crawling",
+        "docs/crawling",
+        "docs/workspaces",
         "docs/chrome-extension",
-        {
-          "group": "Workspaces",
-          "pages": [
-            "docs/workspaces/overview",
-            "docs/workspaces/sso"
-          ]
-        },
         {
           "group": "Integrations",
           "pages": [
@@ -63,7 +57,14 @@
             "docs/advanced-workflows/api"
           ]
         },
-        "docs/security"
+        {
+          "group": "Security",
+          "pages": [
+            "docs/security/introduction",
+            "docs/security/scim",
+            "docs/security/sso"
+          ]
+        }
       ]
     },
     {
