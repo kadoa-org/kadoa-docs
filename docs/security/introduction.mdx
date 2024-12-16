@@ -1,0 +1,55 @@
+---
+title: Security
+---
+An overview of Kadoa security features and practices.
+
+## Governance
+Kadoa establishes policies and controls, monitors compliance with those controls, and proves the security and compliance to third-party auditors.
+
+Our policies are based on the following foundational principles:
+<CardGroup cols={2}>
+    <Card title="Least Priviledge">
+        Access should be limited to only those with a legitimate business needs, based on the principle of least
+        privilege.
+    </Card>
+    <Card title="Consistency">
+        Security controls should be applied consistently across all areas of the enterprise.
+    </Card>
+    <Card title="Defense in Depth">
+        Security controls should be implemented and layered according to the principle of defense-in-depth.
+    </Card>
+    <Card title="Continuous Improvement">
+        The implementation of controls should be iterative, continuously improving effectiveness and decreasing
+        friction.
+    </Card>
+</CardGroup>
+
+
+## Data Protection
+<Card title="Data at rest">
+    All data stores are encrypted at rest.
+</Card>
+    <Card title="Data in transit">
+    Kadoa uses TLS 1.3 or higher everywhere data is transmitted over networks.
+</Card>
+    <Card title="Data backup">
+    Kadoa backs-up all production data using a point-in-time approach. Backups are persisted for 30 days, and are
+    globally replicated for resiliency against regional disasters.
+</Card>
+
+## Product Security
+
+### Penetration testing
+Kadoa engages with third-party firms to conduct penetration testing at least annually.
+
+All areas of the Kadoa product and cloud infrastructure are in-scope for these assessments, and source code is fully available to the testers in order to maximize the effectiveness and coverage.
+
+### Vulnerability scanning
+Kadoa uses multiple vulnerability monitoring techniques including code-level scanning, dependency scanning, and security reviews to identify and remediate vulnerabilities.
+
+Vulnerabilities are prioritized based on severity and risk, and are remediated according to a schedule.
+
+
+## Responsible Disclosure
+To report a vulnerability, please reach out to [security@kadoa.com](mailto:security@kadoa.com)
+

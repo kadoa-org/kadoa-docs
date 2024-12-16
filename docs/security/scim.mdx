@@ -1,0 +1,52 @@
+---
+title: SCIM
+---
+
+<Note>
+    {" "}
+    SCIM is currently only available for Enterprise customers. To upgrade, [get
+    in touch with our sales team](https://www.kadoa.com/contact?type=sales).
+</Note>
+
+## Requirements
+
+> ask support if you need further assistance
+> 
+- Kadoa team created
+- Kadoa `scim-token` (one per team)
+- SSO configured for a team
+
+Once SCIM is enabled for a team, team members are read only in Kadoa dashboard (only role can be changed), user management will be fully externalized to the IdP.
+
+
+## Configuration
+
+### Microsoft Entra
+
+In your enterprise application, set the Provisioning Mode to `Automatic`.
+
+Enter the SCIM endpoint URL provided by Kadoa, usually in the format:
+
+`https://api.kadoa.com/scim/v2`
+
+For authentication, use the SCIM token provided by Kadoa Team.
+
+## FAQ
+
+- How to manage team users roles in Kadoa?
+
+Users roles are managed independently from SCIM in Kadoa dashboard or from dedicated API
+
+- What IdP is supported by Kadoa with SCIM?
+
+Microsoft Entra has been tested to operate with Kadoa and provision users automatically, other might be compatible out-of-the-box since SCIM2.0 is a standard format but can’t be guaranteed unless it’s passed testing phase.
+If your team requires a specific Identity Provider to be integrated with Kadoa SCIM endpoint, please reach out.
+
+- What version of SCIM is used?
+
+✅ SCIM 2.0 (https://datatracker.ietf.org/doc/html/rfc7643)
+
+❌ SCIM 1.1 is not supported
+
+
+
