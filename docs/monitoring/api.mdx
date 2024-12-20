@@ -2,18 +2,15 @@
 title: API Guide
 ---
 
-<Note>
-  {" "}
-  This guide focusses on real-time monitoring which is currently only available for
-  Enterprise customers. To upgrade, [get in touch with our sales team](https://www.kadoa.com/contact?type=sales).
-</Note>
+<Note>Real-time monitoring is currently only available for Enterprise customers. To upgrade, [get
+    in touch with our sales team](https://www.kadoa.com/contact?type=sales).</Note>
 
-The Kadoa API offers multiple endpoints to manage your real-time monitoring workflows and changes.
+The Kadoa API lets you manage your workflows that have monitoring turned on. You can:
 
-- Fetch all active real-time monitoring workflows
-- Fetch all changes for a specific workflow / workflows
+- Get all active workflows that have real-time monitoring enabled.
+- Get historical data changes for one workflow or many workflows.
 
-## Fetch all active real-time monitoring workflows
+## Get All Active Monitoring Workflows
 
 Use the following endpoint to retrieve your workflows:
 
@@ -30,10 +27,17 @@ To get all workflows that are active and have real-time monitoring enabled, you 
 ```
 
 <Note>
-  Be careful - this API is paginated and you will per default only fetch 25
-  workflows at a time. You can also adjust the `limit` query parameter to fetch
-  more workflows with one request.
+    The response is paginated. By default, it returns 25 workflows per page. Use the `limit` parameter to adjust how many are returned at once.
 </Note>
+
+### Diff Field Explanation
+Each change includes a `diff` array that shows what changed between checks. Each entry in diff represents text that was added or removed.
+
+- `value`: The text that changed.
+- `added`: true if this text is new in the latest version.
+- `removed`: true if this text was removed.
+- `count`: How many lines the changed text includes.
+
 
 ### Example Request
 
@@ -44,30 +48,28 @@ curl -X GET "https://api.kadoa.com/v4/workflows?limit=100&state=ACTIVE&monitorin
   -H "x-api-key: YOUR_API_KEY"
 ```
 
-## Fetch Changes for a specific workflow or all workflows
+## Get Changes for Workflows
 
-Use the following endpoint to retrieve the changes for a specific workflow or all workflows:
+The following endpoint returns historical data changes detected by your monitoring workflows. A "change" means the monitor spotted a relevant change in the data since the last check.
 
 **GET** `/v4/changes`
 
 [See API Reference](/api-reference/monitoring/get-all-changes)
 
 <Note>
-  Be careful - this API is paginated as well and you will per default only fetch
-  25 changes at a time. You can also adjust the `limit` query parameter to fetch
-  more changes with one request.
+    The response is paginated. By default, it returns 25 workflows per page. Use the `limit` parameter to adjust how many are returned at once.
 </Note>
 
 ### Example Request
 
-Fetch all changes for all workflows (paginated):
+Fetch all recorded changes for all workflows:
 
 ```bash
 curl -X GET "https://api.kadoa.com/v4/changes" \
   -H "x-api-key: YOUR_API_KEY"
 ```
 
-Fetch all changes (paginated) in a time range for a list of specific workflows:
+Fetch changes in a specific time range for specific workflows:
 
 ```bash
 curl -X GET "https://api.kadoa.com/v4/changes?workflowIds=123456789,987654321&startDate=2024-11-01T00:00:00Z&endDate=2024-11-30T23:59:59Z" \
