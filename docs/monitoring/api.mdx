@@ -30,15 +30,6 @@ To get all workflows that are active and have real-time monitoring enabled, you 
     The response is paginated. By default, it returns 25 workflows per page. Use the `limit` parameter to adjust how many are returned at once.
 </Note>
 
-### Diff Field Explanation
-Each change includes a `diff` array that shows what changed between checks. Each entry in diff represents text that was added or removed.
-
-- `value`: The text that changed.
-- `added`: true if this text is new in the latest version.
-- `removed`: true if this text was removed.
-- `count`: How many lines the changed text includes.
-
-
 ### Example Request
 
 Fetch all workflows that are active and have real-time monitoring enabled with a limit of 100:
@@ -75,3 +66,12 @@ Fetch changes in a specific time range for specific workflows:
 curl -X GET "https://api.kadoa.com/v4/changes?workflowIds=123456789,987654321&startDate=2024-11-01T00:00:00Z&endDate=2024-11-30T23:59:59Z" \
   -H "x-api-key: YOUR_API_KEY"
 ```
+
+### Diff Field Explanation
+Each change includes a `diff` array that shows what changed between checks. Each entry in diff represents text that was added or removed.
+
+- `value`: The text that changed.
+- `added`: true if this text is new in the latest version.
+- `removed`: true if this text was removed.
+- `count`: How many lines the changed text includes.
+
