@@ -111,6 +111,7 @@
         {
           "group": "Advanced Workflows",
           "pages": [
+            "api-reference/advanced-workflows/create-advanced-workflow",
             "api-reference/advanced-workflows/get-all-available-workflow-operators",
             "api-reference/advanced-workflows/update-workflow-steps"
           ]
