@@ -95,36 +95,18 @@ The response will include the workflow configuration.
         "maxRecords": 100
       }
     },
-    {
-      "id": "step_2",
-      "name": "ExtractPDF",
-      "type": "action",
-      "inputs": [
-        {
-          "id": "step_1"
-        }
-      ],
-      "params": {
-        "schema": [
-          {
-            "name": "revenue",
-            "example": "$123121",
-            "description": "Annual revenue number listed at the top of the document"
-          }
-        ]
-      }
-    }
+    ...
   ]
 }
 ```
 
 
 
-## Update Workflow Steps
+## Update Workflow Configuration
 
 To update the steps in an existing workflow, use the following endpoint:
 
-**POST** `/v4/advanced-workflows/{workflowId}/steps`
+**PUT** `/v4/advanced-workflows/{workflowId}/steps`
 
 ### Request Parameters
 
@@ -139,7 +121,7 @@ To update the steps in an existing workflow, use the following endpoint:
 
 ### Example Request
 ```bash
-curl -X POST "https://api.kadoa.com/v4/workflows/123456789/steps" \
+curl -X PUT "https://api.kadoa.com/v4/workflows/123456789/steps" \
   -H "x-api-key: YOUR_API_KEY" \
   -H "Content-Type: application/json" \
   -d '{
@@ -191,6 +173,9 @@ You can now test the updated workflow by using the [/run](/api-reference/workflo
 
 ### Response
 The response will indicate whether the steps were successfully updated, along with the new version of the workflow.
+
+## Create Workflow
+To create a new workflow, it's highly recommended to use the workflow editor on the dashboard.
 
 ## Delete Workflow
 
