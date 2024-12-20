@@ -43,6 +43,10 @@
         "docs/workspaces",
         "docs/chrome-extension",
         {
+          "group": "Monitoring",
+          "pages": ["docs/monitoring/introduction", "docs/monitoring/api"]
+        },
+        {
           "group": "Integrations",
           "pages": [
             "docs/integrations/zapier",
@@ -100,7 +104,7 @@
         {
           "group": "Monitoring",
           "pages": [
-              "api-reference/monitoring/get-all-changes",
+            "api-reference/monitoring/get-all-changes",
             "api-reference/monitoring/get-change-by-id"
           ]
         },
@@ -119,13 +123,10 @@
             "api-reference/templates/delete-a-template-by-id",
             "api-reference/templates/rename-a-template-by-id"
           ]
-
         },
         {
           "group": "Adhoc",
-          "pages": [
-            "api-reference/adhoc/run-synchronous-extraction"
-          ]
+          "pages": ["api-reference/adhoc/run-synchronous-extraction"]
         },
         {
           "group": "Events",
@@ -141,7 +142,6 @@
             "api-reference/webhooks/unsubscribe-from-webhook-events"
           ]
         }
-
       ]
     }
   ],

@@ -1,0 +1,69 @@
+---
+title: API Guide
+---
+
+<Note>
+  {" "}
+  This guide focusses on real-time monitoring which is currently only available for
+  Enterprise customers. To upgrade, [get in touch with our sales team](https://www.kadoa.com/contact?type=sales).
+</Note>
+
+The Kadoa API offers multiple endpoints to manage your real-time monitoring workflows and changes.
+
+- Fetch all active real-time monitoring workflows
+- Fetch all changes for a specific workflow / workflows
+
+## Fetch all active real-time monitoring workflows
+
+Use the following endpoint to retrieve your workflows:
+
+**GET** `/v4/workflows`
+
+[See API Reference](/api-reference/workflows/get-all-workflows)
+
+The response will include all workflows that are in your scope (user, team, organization).
+
+To get all workflows that are active and have real-time monitoring enabled, you can use the following query parameter:
+
+```
+?state=ACTIVE&monitoring=true&updateInterval=REAL_TIME
+```
+
+<Note>
+  Be careful - this API is paginated and you will per default only fetch 25
+  workflows at a time. You can also adjust the `limit` query parameter to fetch
+  more workflows with one request.
+</Note>
+
+### Example Request
+
+Fetch all workflows that are active and have real-time monitoring enabled with a limit of 100:
+
+```bash
+curl -X GET "https://api.kadoa.com/v4/workflows?limit=100&state=ACTIVE&monitoring=true&updateInterval=REAL_TIME" \
+  -H "x-api-key: YOUR_API_KEY"
+```
+
+## Fetch Changes for a specific workflow or all workflows
+
+Use the following endpoint to retrieve the changes for a specific workflow or all workflows:
+
+**GET** `/v4/changes`
+
+[See API Reference](/api-reference/monitoring/get-all-changes)
+
+### Example Request
+
+Fetch all changes for all workflows:
+
+```bash
+curl -X GET "https://api.kadoa.com/v4/changes" \
+  -H "x-api-key: YOUR_API_KEY"
+```
+
+Fetch all changes in a time range for a list of specific workflows:
+
+```bash
+curl -X GET "https://api.kadoa.com/v4/changes?workflowIds=123456789,987654321&startDate=2024-11-01T00:00:00Z&endDate=2024-11-30T23:59:59Z" \
+  -H "x-api-key: YOUR_API_KEY"
+```
