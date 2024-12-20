@@ -52,16 +52,22 @@ Use the following endpoint to retrieve the changes for a specific workflow or al
 
 [See API Reference](/api-reference/monitoring/get-all-changes)
 
+<Note>
+  Be careful - this API is paginated as well and you will per default only fetch
+  25 changes at a time. You can also adjust the `limit` query parameter to fetch
+  more changes with one request.
+</Note>
+
 ### Example Request
 
-Fetch all changes for all workflows:
+Fetch all changes for all workflows (paginated):
 
 ```bash
 curl -X GET "https://api.kadoa.com/v4/changes" \
   -H "x-api-key: YOUR_API_KEY"
 ```
 
-Fetch all changes in a time range for a list of specific workflows:
+Fetch all changes (paginated) in a time range for a list of specific workflows:
 
 ```bash
 curl -X GET "https://api.kadoa.com/v4/changes?workflowIds=123456789,987654321&startDate=2024-11-01T00:00:00Z&endDate=2024-11-30T23:59:59Z" \
