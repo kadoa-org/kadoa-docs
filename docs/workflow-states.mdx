@@ -2,18 +2,22 @@
 title: Workflow States
 ---
 
-When you create a workflow in Kadoa, it goes through various states as it extracts and processes data from a website.
-Here's a quick reference guide to help you understand what each state means:
+This guide explains the different states a workflow can have in the Kadoa system.
 
+<Note>
+    The states shown in the dashboard may differ slightly from those returned by the API, as the dashboard combines both workflow and run states for a unified view.
+</Note>
+
+## State Definitions
 
 | State | Description |
 | --- | --- |
-| In Progress | The workflow is currently extracting data from the targeted website and is functioning as expected. |
-| Finalizing | The workflow is in the final stages of processing the data. |
-| Active | The workflow has completed the data extraction and the data is ready to access. |
-| Paused | The workflow's operation is temporarily halted due to user action, lack of credits, or system-imposed pauses. |
-| Sample Processing | Kadoa is processing sample data for free. You'll get an email when the data is ready for review. |
-| Pending Review | Kadoa has prepared a free sample of your data. Please review and configure. |
-| Support | The Kadoa team is investigating this workflow. |
-| On Hold | The workflow has encountered a site or task it cannot currently process, possibly due to complexity or protection mechanisms. |
-| Error | The workflow has encountered a technical error and the Kadoa team is proactively investigating this issue. |
+| Draft |Initial state when a workflow is created but not yet executed. |
+| Sample Processing | System is processing free data sample. You'll get an email when the data is ready for review. |
+| Pending Review | Sample data is ready for user review and configuration. |
+| In Progress | Active data extraction is currently running. |
+| Complete | Successful execution with no future runs scheduled. |
+| Scheduled |  Workflow is configured for future execution. |
+| Paused | The workflow's execution is temporarily paused due to user action or lack of credits. |
+| Error | The workflow has encountered a technical error and the Kadoa team is investigating this issue. |
+| Not Supported | The workflow cannot process data from the target source due to access or extraction limitations. |
