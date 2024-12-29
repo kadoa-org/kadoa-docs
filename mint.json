@@ -39,6 +39,7 @@
         "docs/data-schemas",
         "docs/credits",
         "docs/crawling",
+        "docs/adhoc",
         "docs/workspaces",
         "docs/chrome-extension",
         {
@@ -141,6 +142,10 @@
             "api-reference/webhooks/subscribe-to-webhook-events",
             "api-reference/webhooks/unsubscribe-from-webhook-events"
           ]
+        },
+        {
+          "group": "Locations",
+          "pages": ["api-reference/locations/get-all-locations"]
         }
       ]
     }

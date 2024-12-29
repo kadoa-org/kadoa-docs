@@ -1,57 +1,57 @@
+## Overview
+
+Kadoa uses a credit system to handle different types of data extraction and crawling tasks. Credits are valid for one billable month and do not roll over. If a website can’t be scraped successfully due to technical issues, you won’t be charged for that request.
+
+**Note:** Enterprise customers have custom usage commitments depending on volume and update frequency. To discuss a tailored enterprise plan, [contact our sales team](https://www.kadoa.com/pricing/enterprise).
+
 ---
-title: Credits
+
+## Pricing Categories
+
+### 1. Workflow
+
+Workflows are automated data tasks that run repeatedly to extract data rows. A single *data row* is one line of results in the table on your Kadoa dashboard.
+
+| Action                  | Cost       |
+| ----------------------- | ---------- |
+| **Minimum charge per run** | 10 credits |
+| **Extracting a data row**  | 2 credits  |
+
+**Examples**
+
+- **100 data rows**: `100 * 2 = 200 credits`  
+- **20 data rows**: `20 * 2 = 40 credits`  
+- **2 data rows**: `2 * 2 = 4 credits => 10 credits` (billed at the minimum run cost)
+
+### 2. Adhoc
+
+Adhoc requests refer to on-demand, one-off data extractions.
+
+| Action                                                   | Cost        |
+| -------------------------------------------------------- | ----------- |
+| With a template (structured extraction)                  | 10 credits  |
+| With a template (structured) + user-set location         | 15 credits  |
+| Without a template (`"html"`, `"markdown"`, `"body"`)    | 1 credit    |
+| Without a template + user-set location                   | 5 credits   |
+
+### 3. Crawling
+
+Credits are charged based on the number of pages crawled.
+
+| Action                                                 | Cost      |
+| ------------------------------------------------------ | --------- |
+| Crawling a normal page                                 | 1 credit  |
+| Crawling with user-set location (`countryCode`)        | 5 credits |
+
 ---
 
-## How do Kadoa credits work?
+## Frequently Asked Questions
 
-Here’s a detailed breakdown of the costs associated with running a data workflow:
+**Do credits expire?**  
+Yes. All credits are valid for one billable month and do not carry over into the following month.
 
-## Workflows
+**What happens if a website can’t be scraped?**  
+You are only charged for successful requests. If there are any technical issues, we’ll investigate as soon as possible.
 
-| Action                       | Cost          |
-| ---------------------------- | ------------- |
-| Minimum charge per run       | 10 credits    |
-| Extracting a data row        | 2 credits     |
-
-**What is a data row?**
-
-A data row refers to a single row of results in the data table visible on your Kadoa dashboard.
-
-If your workflow extracts 100 data rows, the total cost for one run would be  
-`100 rows * 2 = 200 credits`
-
-If your workflow extracts 20 data rows:  
-`20 rows * 2 = 40 credits`
-
-If your workflow extracts only 2 data rows:  
-`2 rows * 2 = 4 credits => 10 credits`  
-(billed at the minimum run cost of 10 credits)
-
-## Real-Time Data Extraction API
-
-| Action                                                 | Cost          |
-| ------------------------------------------------------ | ------------- |
-| Extracting a normal page                               | 50 credits    |
-| Extracting a page with user-set location (countryCode) | 200 credits   |
-
-Synchronous data extraction is more challenging and has higher infrastructure costs associated with it.
-
-## Crawling
-
-| Action                                                 | Cost          |
-| ------------------------------------------------------ | ------------- |
-| Crawling a normal page                                 | 1 credit      |
-| Crawling a page with user-set location (countryCode)   | 5 credits     |
-
-## Do credits expire?
-
-Yes, credits are valid for one billable month, leftovers are not rolled-over to the next month.
-
-## What happens if a website can't be scraped?
-
-We only charge for successful requests. If there should be any technical issues with a scraper, we'll investigate it as soon as possible.
-
-## Do enterprise customers also get credits?
-
-No, enterprise customers have custom usage commitments depending on their volume and update frequency.
-If you have high-volume data needs, [contact our sales team](https://www.kadoa.com/pricing/enterprise) to discuss a tailored enterprise plan.
+**Do enterprise customers also get credits?**  
+Enterprise customers have custom usage commitments rather than a standard credit plan. [Contact our sales team](https://www.kadoa.com/pricing/enterprise) if you have high-volume data needs.
