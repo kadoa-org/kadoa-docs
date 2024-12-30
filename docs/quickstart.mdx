@@ -8,27 +8,36 @@ Kadoa enables you to easily extract data from any website. You can configure the
 
 <AccordionGroup>
     <Accordion icon="wand-magic-sparkles" title="Auto-Detect Setup (recommended)">
+        Best for: Getting started quickly.
 
-        - Go to your Kadoa Dasbhoard and [add a new workflow](https://kadoa.com/add).
-        - Kadoa analyzes the source automatically and shows what data it can extract.
+        Our AI automatically analyzes the data source and suggests what data can be extracted.
+
+        1. Go to your Kadoa Dashboard and [add a new workflow](https://kadoa.com/add)
+        2. Enter your URL and let Kadoa analyze the page structure
+        3. Review and customize the suggested data fields
 
     </Accordion>
 
     <Accordion icon="list" title="Multiple URLs">
-        Add multiple URLs for the same website if you want to run an extraction on just a few same pages.
+        Best for: Extractions from a specific set of pages.
+
+        When you have a handful of specific pages from the same website, simply paste your URLs directly. Ideal when you don't need to extract an entire section or category.
     </Accordion>
 
     <Accordion icon="brackets-curly" title="Dynamic URLs">
-        Add dynamic URLs using a placeholder and a list of values.
-        Helpful for URLs with search queries, product IDs, and similar patterns.
+        Best for: Extractions with predictable URL patterns (e.g. search queries, product IDs, locations).
+
+        Use when you need to scrape multiple pages that follow a consistent URL structure. Add placeholders (%%) that Kadoa will automatically fill with your provided values.
+
         ```
         https://site.com?search=%%
+        https://site.com/location/%%/jobs
         ```
 
     </Accordion>
 
     <Accordion icon="chrome" title="Chrome Extension">
-        Use the extension to pick exactly what data you want from a page.
+        Best for: Complex pages or specific data selections. The Chrome extension lets you manually select the exact data you want to extract.
 
         1. Install the [Kadoa Chrome Extension](/docs/chrome-extension).
         2. Navigate to your the website you want to use as a data source.
@@ -38,15 +47,18 @@ Kadoa enables you to easily extract data from any website. You can configure the
     </Accordion>
 
     <Accordion icon="copy" title="Templates">
+        Best for: Consistent data extraction across multiple similar websites.
+
 
         Start with a pre-built or custom template if you want to reuse a data schema across many sites. Learn more about templates [here](/docs/data-schemas).
 
     </Accordion>
 
     <Accordion icon="code" title="API">
+        Best for: Programmatic workflow creation and automation
 
-        Programmatically create workflows using the API, which is useful if you’re building many similar workflows.
-        See the API reference [here](/api-reference/workflows/create-a-new-workflow).
+        Use our API to programmatically create and manage your workflows.
+        [View API documentation](/api-reference/workflows/create-a-new-workflow)
 
     </Accordion>
 </AccordionGroup>
