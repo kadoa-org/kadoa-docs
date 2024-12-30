@@ -32,7 +32,7 @@ Use the following endpoint to retrieve details about a specific workflow:
 
 The response will include the result data and some additional metadata about the workflow run.
 
-```
+```json
 {
   "workflowId": "123456789",
   "runId": "987654321",
@@ -68,7 +68,7 @@ curl -X GET "https://api.kadoa.com/v4/advanced-workflows/123456789" \
 ### Response
 The response will include the workflow configuration.
 
-```
+```json
 {
   "_id": "672ca6901bbb07110098eb1a",
   "name": "Test",

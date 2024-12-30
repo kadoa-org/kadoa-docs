@@ -8,7 +8,7 @@ title: Introduction
     in touch with our sales team](https://www.kadoa.com/contact?type=sales).
 </Note>
 
-Advanced Workflows enable complex data workflow scenarios beyond basic web scraping.
+Advanced Workflows let you handle complex ETL workflow scenarios.
 This guide covers the key features and how to get started.
 
 
@@ -16,13 +16,15 @@ This guide covers the key features and how to get started.
 ## Platform Features
 
 ### Data Sources
+Kadoa lets you extract data from any unstructured data source. For example:
 - **Browser Automation**: Record and replay complex interactions like clicks, form fills, and page navigation
 - **Crawling & Discovery**: Automatically discover and process content across multiple pages of a website
 - **CSV Batch Processing**: Upload CSV files containing URLs or file paths for bulk data extraction
 - **PDF Processing**: Extract structured data from financial reports, regulatory filings, and other documents
 - **Email Integration**: Process data from email attachments and message content
 
-### Data Processing
+### Data Processing (Actions)
+Once data is collected, you can:
 - **Transformation**: Clean, format, and structure the data
 - **Validation**: Apply rules and constraints to ensure data quality
 - **Enrichment**: Combine data from multiple sources or add computed fields
@@ -31,6 +33,7 @@ This guide covers the key features and how to get started.
 
 
 ### Data Destinations
+After processing, load data wherever you need:
 - **Export Options**: CSV, JSON, API endpoints, or custom destinations
 - **Scheduling**: Configure run frequency and update triggers
 - **Monitoring & Notifications**: Get alerts or webhook events for changes or completion
@@ -38,35 +41,18 @@ This guide covers the key features and how to get started.
 
 
 ## Getting Started
+The Kadoa Workflow Builder lets you create any unstructured data workflow by configuring `sources`, `actions`, and `destinations` - all in a single place.
 
-Advanced Workflows are built using two main tools:
+### 1. Configure a Data Source
+Configure a data source by either setting up a website crawler, uploading a CSV, or using any other unstructured data source
 
-1. Use the Kadoa Chrome extension to record interactions and select the data.
-2. Use the Kadoa Workflow Builder to configure actions and set data destinations.
-
-## Step 1. Use Kadoa Chrome extension to pick the data
-
-<video
-  controls
-  className="w-full aspect-video rounded"
-  src="/videos/advanced-ext-1.mp4"
-></video>
-
-- [Install the Kadoa Chrome extension](https://chromewebstore.google.com/detail/kadoa-ai-web-scraper/nmmlhnjgcechchnkjpkofkjemmlfbnnd).
-- Navigate to the webpage containing the data you want to extract.
-- Open the Kadoa extension.
-- If the webpage requires interactions to display the desired data, **record** your interactions so that Kadoa can replay them later.
-- Once the data is visible, **select** one or more elements that contain it, and specify the type of data you want to extract.
-- After clicking `Continue`, you'll be redirected to the Kadoa workflow builder.
-
-## Step 2. Use Kadoa Workflow builder to configure actions and destinations
+### 2. Build a Workflow
 
 An advanced workflow consists of three sections: source, actions, and destinations. You have already configured the source data using the Kadoa Chrome extension. Now, use the Workflow Builder to add actions and define destinations for your data.
 
 ![Workflow Builder Screeenshot](/images/advanced-builder-2.png)
 
-<Note>
-  We're actively working on implementing more actions and destinations.
-</Note>
 
-Finally, click the **Test Run** button. Kadoa will process the sample data for free and send you an email notification once the data is ready for review.
+### 3. Run a Workflow
+
+Finally, click the `Run now` button. Kadoa will process a sample of your data for free and send you an email once it’s ready for review. If everything looks good, you can run it at scale.

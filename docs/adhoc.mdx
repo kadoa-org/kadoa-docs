@@ -1,117 +1,37 @@
+---
+title: Adhoc Extractions
+---
+
+
 ## Introduction
 
-Kadoa’s **Adhoc** API endpoint allows you to run **synchronous**, on-demand extractions without setting up a complete workflow. Whether you need quick access to raw HTML, markdown, or structured data via a predefined template, this endpoint is a straightforward solution.
+Kadoa’s Adhoc endpoint lets you extract a single page on-demand. It is synchronous, so you get your data in one step—no need to set up a full workflow.
 
-This guide walks you through:
+## Prerequisites
+To get the most out of this guide, you’ll need to:
+- Create a Kadoa account
+- [Get your API key](/api-reference/introduction)
 
-- Authenticating and preparing an Adhoc API request  
-- Initiating a synchronous extraction (using a template or raw HTML/body/markdown)  
-- Understanding the response, including metadata such as the scraped URL and processing time  
 
----
+## 1. Choose the Result Format
+Every Adhoc request includes `templateId` in the URL path:
 
-## Authentication
+- Custom Template ID: Use your own [workflow template](/docs/data-schemas)
+- `html`: Returns the page’s raw HTML
+- `body`: Returns a cleaned HTML body
+- `markdown`: Returns the page in Markdown
 
-### Get Your API Key
 
-To authenticate requests, retrieve your personal Kadoa API key from your [Kadoa Dashboard](https://www.kadoa.com).
 
-### API Request Headers
-
-Include your API key in the headers of each API request:
-
-```json
-{
-  "x-api-key": "<Kadoa API Key>"
-}
-```
-
----
-
-## How It Works
-
-### 1. Run a Synchronous Extraction
-
-To initiate an on-demand extraction, send a **POST** request to:
-
-```
-POST https://api.kadoa.com/v4/adhoc/{templateId}
-```
-
-- **templateId** (Path Parameter)  
-  A string identifying the template used for data extraction. Special IDs `html`, `body`, or `markdown` let you retrieve **raw HTML**, **cleaned body HTML**, or **Markdown** respectively.  
-
-#### Request Body Parameters
-
-| Field       | Type     | Required | Description                                                                                                                                 |
-| ----------- | -------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
-| `link`      | String   | Yes      | The URL to be scraped (e.g., `https://example.com`).                                                                                       |
-| `location`  | Object   | No       | An optional object that specifies the proxy location. For example: `{ "type": "manual", "isoCode": "US" }`.                            |
-
-**Sample cURL Request**
-
-```bash
-curl --request POST \
-  --url https://api.kadoa.com/v4/adhoc/{templateId} \
-  --header 'Content-Type: application/json' \
-  --header 'x-api-key: d97bd74a-e868-4bfa-938e-c5f565acd505' \
-  --data '{
-    "link": "https://example.com",
-    "location": {
-      "type": "manual",
-      "isoCode": "US"
-    }
-  }'
-```
-
-### 2. Interpreting the Response
-
-A successful **200** response returns a JSON payload with the following structure:
-
-| Field             | Type     | Description                                                                 |
-| ----------------- | -------- | --------------------------------------------------------------------------- |
-| `status`          | String   | The status of the response (e.g., `"success"`).                             |
-| `link`            | String   | The URL that was scraped.                                                  |
-| `location`        | Object   | The proxy location object used, matching the request.                       |
-| `data`            | Object   | The extracted data. For structured templates, this contains validated JSON. |
-| `screenshotUrl`   | String   | A direct link to a screenshot of the rendered page, if available.           |
-| `requestTimeMs`   | Integer  | The time taken to process the request in milliseconds.                      |
-
-**Sample Response (200)**
-
-```json
-{
-  "status": "success",
-  "link": "https://example.com",
-  "location": {
-    "type": "manual",
-    "isoCode": "US"
-  },
-  "data": {
-    "title": "Example Title",
-    "content": "..."
-  },
-  "screenshotUrl": "https://cdn.kadoa.com/adhoc/xyz123.png",
-  "requestTimeMs": 1345
-}
-```
-
-### 3. Handling Error Cases
-
-- **400** – Invalid request body or missing parameters.  
-- **404** – The requested `templateId` was not found.  
-- **429** – You have exceeded your rate limit; try again later.  
-- **500** – An internal server error occurred.
-
----
-
-## Locations API (Optional)
+## 2. Use A Proxy Location (Optional)
 
 If you need to specify a proxy location, you can retrieve valid locations first:
 
 ```
 GET https://api.kadoa.com/v4/locations
 ```
+[See API Reference](/api-reference/locations/get-all-locations)
+
 
 **Sample Response**
 
@@ -132,16 +52,38 @@ GET https://api.kadoa.com/v4/locations
 
 Use the returned `isoCode` values in your Adhoc requests for `location.isoCode`.
 
----
 
-## Conclusion
+## 3. Run an Adhoc Extraction
 
-Kadoa’s **Adhoc** endpoint offers a quick way to run single-shot extractions using either predefined templates or raw content modes (HTML, body, or markdown). By specifying a location proxy and leveraging the returned structured or raw data, you can seamlessly integrate real-time scraping results into your pipelines without the overhead of a full workflow.
+To initiate an adhoc extraction, send a **POST** request to the `/adhoc` endpoint with the desired configuration.
 
-Get started by:
+[See API Reference](/api-reference/adhoc/run-synchronous-extraction)
+```bash
+curl -X POST "https://api.kadoa.com/v4/adhoc/markdown" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: <YOUR_API_KEY>" \
+  -d '{
+    "link": "https://demo.vercel.store/product/acme-drawstring-bag",
+    "location": {
+      "type": "manual",
+      "isoCode": "US"
+    }
+  }'
+```
 
-1. Retrieving your [Kadoa API key](https://www.kadoa.com).  
-2. Choosing a template ID or raw extraction mode (`html`, `body`, `markdown`).  
-3. Sending your **POST** request to `https://api.kadoa.com/v4/adhoc/{templateId}`.  
+A successful response should look like this:
 
-For higher-volume or more complex use cases, explore Kadoa’s [Workflow](https://www.kadoa.com/docs/workflow) or [Crawling](https://www.kadoa.com/docs/crawl) features.
+```json
+{
+  "status": "SUCCESS",
+  "link": "https://demo.vercel.store/product/acme-drawstring-bag",
+  "location": {
+    "type": "manual",
+    "isoCode": "US"
+  },
+  "data": "[Acme Store](/)\n* #Sample Markdown\n\n## Heading 2\n\nThis is a **bold** text and this is *italic*.\n\n",
+  "screenshotUrl": "https://storage.googleapis.com/kadoa-public-share/screenshots/12345.jpeg",
+  "requestTimeMs": 8353
+}
+```
+

@@ -4,92 +4,87 @@ title: Crawling
 
 ## Introduction
 
-Web scraping and data extraction are crucial for transforming vast online datasets into formats suitable for large language models (LLMs). 
-
-
-Kadoa as an API-first company, ensures seamless integration by making core features accessible through robust API endpoints. This guide walks you through leveraging Kadoa's web crawling capabilities via its `/crawl` API endpoint. You’ll learn how to:
+Crawling is useful to automatically crawl all accessible subpages of a website and convert them into structured JSON or markdown.
+This guide helps you:
 
 - Initiate a crawling session
 - Check crawling session status
 - List crawled pages
 - Access crawled page content
 
----
-
-## Authentication
-
-### Get Your API Key
-
-To authenticate, retrieve your personal Kadoa API key from your [Kadoa Dashboard](https://www.kadoa.com/account).  
-
-### API Request Headers
-
-Include your API key in the headers of each API request:
-
-```json
-{ 
-    "x-api-key": "<Kadoa API Key>" 
-}
-```
+## Prerequisites
+To get the most out of this guide, you’ll need to:
+- Create a Kadoa account
+- [Get your API key](/api-reference/introduction)
 
 
-## How It Works
-
-### Initiate a crawling session
+## 1. Start a Crawl
 
 To initiate a web crawl, send a POST request to the `/crawl` endpoint with the desired configuration.
 
 ```bash
-POST https://api.kadoa.com/v4/crawl
+curl -X POST "https://api.kadoa.com/v4/crawl" \
+  -H "Content-Type: application/json" \
+  -H "x-api-key: <Kadoa API Key>" \
+  -d '{
+    "url": "https://demo.vercel.store/",
+    "maxDepth": 10,
+    "maxPages": 50
+  }'
 ```
-
-Body parameters:
-
-- `url`: String, required. The root URL to target for the operation (e.g., `www.example.org`).
-- `pathsFilterIn`: Array of strings, optional. Specifies URL path patterns to include in the operation (e.g., `["/shop"]`).
-- `pathsFilterOut`: Array of strings, optional. Specifies URL path patterns to exclude from the operation (e.g., `["/about"]`).
-- `timeout`: Positive integer, optional. Represents the timeout duration in seconds.
-- `maxDepth`: Positive integer, optional. Specifies the maximum depth of crawling (e.g., `10`).
-- `maxPages`: Positive integer, optional. Specifies the maximum number of pages to crawl (e.g., `1000`).
-- `strictDomain`: Boolean, optional. Enforces crawling only within the same domain (e.g., `true` for staying on `www.acme.org` and not traversing to `docs.acme.org`).
-- `proxyCountry`: String, optional. Represents the proxy country code (e.g., `"US"`, `"DE"`, `"FR"`, `"IT"`, `"BR"`, ...).
+[See API Reference](/api-reference/crawling/start-crawling-session)
 
 
-Configuration Notes:
-
-> Use pathsFilterIn and pathsFilterOut to include or exclude specific paths.
-  Adjust timeout, maxDepth, and maxPages to refine the crawling process.
-
-
-### Check crawl status
-
-Monitor the progress of your crawling session using the `/crawl/status/<sessionId>` endpoint.
-
-```
-GET https://api.kadoa.com/v4/crawl/<sessionId>/status
-```
-
-Sample Response:
+A successful response should look like this:
 
 ```json
 {
-    "payload": {
-        "finished": false,
-        "crawledPages": 20
-    },
-    "sessionId": "<sessionId>",
-    "error": null
+  "message": "Session started",
+  "sessionId": "<sessionId>",
+  "error": null
 }
 
 ```
 
-### List crawled pages
+
+<Tip>
+Use `pathsFilterIn` and `pathsFilterOut` to include or exclude specific paths.
+  Adjust `timeout`, `maxDepth`, and `maxPages` to refine the crawling process.
+</Tip>
+
+## 2. Check Crawl Status
+
+Monitor the progress of your crawling session using the `/crawl/status/<sessionId>` endpoint.
+
+```bash
+curl -X GET "https://api.kadoa.com/v4/crawl/<sessionId>/status" \
+  -H "x-api-key: <Kadoa API Key>"
+```
+[See API Reference](/api-reference/crawling/crawling-session-status)
+
+You’ll see how many pages are crawled and whether the session is finished:
+
+```json
+{
+  "payload": {
+    "crawledPages": 14,
+    "finished": true
+  },
+  "sessionId": "<sessionId>",
+  "error": null
+}
+
+```
+
+## 3. List Crawled Pages
 
 Access the crawled pages using the `/crawl/<sessionId>/pages` endpoint with pagination.
 
+```bash
+curl -X GET "https://api.kadoa.com/v4/crawl/<sessionId>/pages?currentPage=0&pageSize=100" \
+  -H "x-api-key: <Kadoa API Key>"
 ```
-GET https://api.kadoa.com/v4/crawl/<sessionId>/pages?currentPage=<page_number>&pageSize=<page_size>
-```
+[See API Reference](/api-reference/crawling/get-crawled-pages)
 
 Query parameters:
 
@@ -102,8 +97,8 @@ Sample Response:
 ```json
 {
     "payload": [
-        { "id": "<pageId>", "url": "https://example.com", "status": "DONE" },
-        { "id": "<pageId>", "url": "https://example.com/about", "status": "CRAWLING" }
+        { "id": "<pageId>", "url": "https://demo.vercel.store/", "status": "DONE" },
+        { "id": "<pageId>", "url": "https://demo.vercel.store/about", "status": "CRAWLING" }
     ],
     "pagination": {
         "currentPage": 1,
@@ -114,16 +109,17 @@ Sample Response:
     "sessionId": "<sessionId>",
     "error": null
 }
-
 ```
 
-### Access crawled page content
+## 4. Retrieve Page Content
 
-Use the `/crawl/<sessionId>/pages/<pageId>` endpoint to retrieve the content of individual crawled pages in your preferred format. The API can deliver the page payload directly in an LLM-ready format, such as markdown.
+Now let's retrieve the content of the crawled pages in our preferred format. The API can deliver the page payload directly in an LLM-ready format, such as markdown.
 
+```bash
+curl -X GET "https://api.kadoa.com/v4/crawl/<sessionId>/pages/page1?format=md" \
+  -H "x-api-key: <Kadoa API Key>"
 ```
-GET https://api.kadoa.com/v4/crawl/<sessionId>/pages/<pageId>?format={html|md}
-```
+[See API Reference](/api-reference/crawling/get-crawled-page-meta)
 
 Supported Formats:
 
@@ -153,13 +149,3 @@ Sample response (HTML):
 }
 
 ```
-
-
-## Conclusion
-
-
-Kadoa's `/crawl` API endpoint is a powerful tool for automated web scraping, providing flexibility and control over data extraction processes.
-By leveraging its features—such as path filters, proxy configuration, and content retrieval in multiple formats—you can efficiently transform web data into a structure optimized for LLM integration or other analytical purposes without writing a single line of code.
-Whether you’re a developer building complex data pipelines or a researcher exploring web data, Kadoa simplifies the entire crawling workflow.
-
-Start your journey today by visiting Kadoa Dashboard to get your API key and unlock the full potential of web crawling with Kadoa.
