@@ -93,7 +93,6 @@
             "api-reference/workflows/create-a-new-workflow",
             "api-reference/workflows/run-a-workflow",
             "api-reference/workflows/schedule-a-workflow",
-            "api-reference/workflows/update-limit-for-a-workflow",
             "api-reference/workflows/update-workflow-metadata",
             "api-reference/workflows/pause-a-workflow",
             "api-reference/workflows/delete-a-workflow",
