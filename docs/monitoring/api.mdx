@@ -10,7 +10,13 @@ With our API, you can conveniently manage all your workflows that have monitorin
 - Get all active workflows that have monitoring enabled.
 - Get historical data changes for one or multiple workflows.
 
-## Get All Active Monitoring Workflows
+
+## Prerequisites
+To get the most out of this guide, you’ll need to:
+- Create a Kadoa account
+- [Get your API key](/api-reference/introduction)
+
+## 1. Get All Active Monitoring Workflows
 
 Use the following endpoint to retrieve your workflows:
 
@@ -22,45 +28,23 @@ The response will include all workflows that are in your scope (user, team, orga
 
 To get all workflows that are active and have real-time monitoring enabled, you can use the following query parameter:
 
-```
-?state=ACTIVE&monitoring=true&updateInterval=REAL_TIME
-```
-
-<Note>
-    The response is paginated. By default, it returns 25 workflows per page. Use the `limit` parameter to adjust how many are returned at once.
-</Note>
-
-### Example Request
-
-Fetch all workflows that are active and have real-time monitoring enabled with a limit of 100:
-
 ```bash
 curl -X GET "https://api.kadoa.com/v4/workflows?limit=100&state=ACTIVE&monitoring=true&updateInterval=REAL_TIME" \
   -H "x-api-key: YOUR_API_KEY"
 ```
 
-## Get Changes for Workflows
+## 2. Get Changes for Workflows
 
 The following endpoint returns historical data changes detected by your monitoring workflows. A "change" means the monitor spotted a relevant change in the data since the last check.
-
-**GET** `/v4/changes`
-
-[See API Reference](/api-reference/monitoring/get-all-changes)
-
-<Note>
-    The response is paginated. By default, it returns 25 workflows per page. Use the `limit` parameter to adjust how many are returned at once.
-</Note>
-
-### Example Request
-
-Fetch all recorded changes for all workflows:
 
 ```bash
 curl -X GET "https://api.kadoa.com/v4/changes" \
   -H "x-api-key: YOUR_API_KEY"
 ```
 
-Fetch changes in a specific time range for specific workflows:
+[See API Reference](/api-reference/monitoring/get-all-changes)
+
+To fetch changes in a specific time range for specific workflows, you can use the corresponding query params:
 
 ```bash
 curl -X GET "https://api.kadoa.com/v4/changes?workflowIds=123456789,987654321&startDate=2024-11-01T00:00:00Z&endDate=2024-11-30T23:59:59Z" \

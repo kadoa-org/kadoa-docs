@@ -1,47 +1,52 @@
-## Overview
-
-Kadoa uses a credit system to handle different types of data extraction and crawling tasks. Credits are valid for one billable month and do not roll over. If a website can’t be scraped successfully due to technical issues, you won’t be charged for that request.
-
-**Note:** Enterprise customers have custom usage commitments depending on volume and update frequency. To discuss a tailored enterprise plan, [contact our sales team](https://www.kadoa.com/pricing/enterprise).
-
+---
+title: "Credits and Usage"
+description: ""
 ---
 
-## Pricing Categories
+## Overview
 
-### 1. Workflow
+Kadoa uses a credit system to charge for different types of usage. Each task costs a certain number of credits.
 
-Workflows are automated data tasks that run repeatedly to extract data rows. A single *data row* is one line of results in the table on your Kadoa dashboard.
+<Note>
+    Enterprise customers have custom usage limits. To discuss a tailored enterprise plan, [contact our sales
+    team](https://www.kadoa.com/pricing/enterprise).
+</Note>
 
-| Action                  | Cost       |
+
+## Credit Costs
+
+### 1. Workflows
+
+Workflows automatically extract data rows on a schedule.
+
+| Type                  |   Cost     |
 | ----------------------- | ---------- |
-| **Minimum charge per run** | 10 credits |
-| **Extracting a data row**  | 2 credits  |
+|Minimum cost per run | 10 credits |
+|Cost per data row  | 2 credits  |
 
-**Examples**
+Examples:
 
-- **100 data rows**: `100 * 2 = 200 credits`  
-- **20 data rows**: `20 * 2 = 40 credits`  
-- **2 data rows**: `2 * 2 = 4 credits => 10 credits` (billed at the minimum run cost)
+- 100 data rows: `200 credits`
+- Extracting 3 rows: `10 credits` (minimum charge applies)
 
-### 2. Adhoc
 
-Adhoc requests refer to on-demand, one-off data extractions.
 
-| Action                                                   | Cost        |
-| -------------------------------------------------------- | ----------- |
-| With a template (structured extraction)                  | 10 credits  |
-| With a template (structured) + user-set location         | 15 credits  |
-| Without a template (`"html"`, `"markdown"`, `"body"`)    | 1 credit    |
-| Without a template + user-set location                   | 5 credits   |
+### 2. Adhoc Extractions
 
-### 3. Crawling
+Adhoc extractions let you instantly extract data from a single webpage. Unlike workflows which run on a schedule, these are one-time extractions that run instantly when requested.
 
-Credits are charged based on the number of pages crawled.
+| Type                                                   | Cost        |
+| ------------------------------------------------------ | ----------- |
+|  Basic extraction (`"html"`, `"markdown"`, `"body"`)    | 1 credit    |
+| Structured extraction (with template)                   | 10 credits  |
+| Location-specific extraction (additional)          | +5 credits  |
 
-| Action                                                 | Cost      |
+### 3. Web Crawling
+
+| Type                                                 | Cost      |
 | ------------------------------------------------------ | --------- |
-| Crawling a normal page                                 | 1 credit  |
-| Crawling with user-set location (`countryCode`)        | 5 credits |
+| Crawling a page                                 | 1 credit  |
+| Crawling with location (`countryCode`)        | 5 credits |
 
 ---
 
