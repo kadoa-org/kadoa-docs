@@ -1,0 +1,62 @@
+---
+title: Websocket Integration
+---
+
+<Note>
+  Real-time monitoring is currently only available for Enterprise customers. To
+  upgrade, [get in touch with our sales
+  team](https://www.kadoa.com/contact?type=sales).
+</Note>
+
+With our Websocket API, you can listen to real-time changes for your workflows.
+
+## Introduction
+
+We recommend using our SDKs to listen to real-time changes. It implements all the necessary logic to handle the connection, authentication, message acknowledgement, redevlivery and reconnection logic.
+
+If you still want to integrate by yourself reach out to us and we can help you set it up.
+
+## Features
+
+- Real-time change delivery
+- Message acknowledgement and redelivery
+- Heartbeat and reconnection logic
+
+## Message format
+
+All messages are JSON objects with the following fields:
+
+Always present:
+
+- `type`: The type of the message.
+- `timestamp`: The timestamp of the message.
+
+Optional depending on the type:
+
+- `data`: The data of the message.
+- `id`: The ID of the message used for acknowledgement.
+
+## Types
+
+### `workflow_data_change`
+
+This message is sent when a workflow data changes.
+
+### `workflow_state_change`
+
+### `heartbeat`
+
+<Note>
+  SDKs will handle the heartbeat logic for you. You don't need to implement it.
+</Note>
+
+This message is sent every 15 seconds. It's used to keep the connection alive. If you don't receive a heartbeat after 30 seconds, the connection is considered dead you should reconnect.
+
+Example:
+
+```json
+{
+  "type": "heartbeat",
+  "timestamp": 1736367604663
+}
+```
