@@ -8,21 +8,19 @@ title: WebSocket
   team](https://www.kadoa.com/contact?type=sales).
 </Note>
 
-With our WebSocket API, you can listen to real-time changes for your workflows.
+With our WebSocket API, you can listen to real-time changes from your monitoring workflows.
 
-## Introduction
+## Prerequisites
+- A Kadoa account
+- [Your API key](/api-reference/introduction)
+- [Our SDK](/docs/sdks/introduction)
 
-We recommend using our SDKs to listen to real-time changes. It implements all the necessary logic to handle the connection, authentication, message acknowledgement, redevlivery and reconnection logic.
+We strongly recommend using our SDK for real-time updates. The SDK handles the connection, authentication, message acknowledgement, redevlivery and reconnection logic.
+If you need to implement a native WebSocket integration, please contact us.
 
-If you still want to integrate by yourself reach out to us and we can help you set it up.
 
-## Features
 
-- Real-time change delivery
-- Message acknowledgement and redelivery
-- Heartbeat and reconnection logic
-
-## Message format
+## Message Format
 
 All messages are JSON objects with the following fields:
 
@@ -36,7 +34,7 @@ Optional depending on the type:
 - `data`: The data of the message.
 - `id`: The ID of the message used for acknowledgement.
 
-## Types
+## Message Types
 
 ### `workflow_data_change`
 
