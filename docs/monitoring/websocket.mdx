@@ -41,12 +41,35 @@ This message is sent when a workflow data changes.
 
 Fields:
 
-- `id`: The change ID of the workflow. You can also retrieve the change with screenshot over the [/changes endpoint](/api-reference/monitoring/get-change-by-id) or view the change in the Kadoa dashboard like: https://www.kadoa.com/data-diff/ID
-- `workflowId`: The ID of the workflow. Accessible over the [/workflows endpoint](/api-reference/workflows/get-workflow-by-id) or the Kadoa dashboard like: https://www.kadoa.com/workflow/WORKFLOW_ID
-- `data`: The data of the workflow. Full snapshot of the data at the time of the change.
-- `diff`: The diff of the data. For an explanation of the diff format, please refer to the [data diff documentation](/docs/monitoring/api#diff-field-explanation).
-- `url`: The URL of the workflow.
-- `createdAt`: The timestamp in ISO format when the change was detected.
+<ParamField path="id" type="string">
+  The change ID of the workflow. You can also retrieve the change with
+  screenshot over the [/changes
+  endpoint](/api-reference/monitoring/get-change-by-id) or view the change in
+  the Kadoa dashboard like: https://www.kadoa.com/data-diff/ID
+</ParamField>
+
+<ParamField path="workflowId" type="string">
+  The ID of the workflow. Accessible over the [/workflows
+  endpoint](/api-reference/workflows/get-workflow-by-id) or the Kadoa dashboard
+  like: https://www.kadoa.com/workflow/WORKFLOW_ID
+</ParamField>
+
+<ParamField path="data" type="object">
+  The data of the workflow. Full snapshot of the data at the time of the change.
+</ParamField>
+
+<ParamField path="diff" type="object">
+  The diff of the data. For an explanation of the diff format, please refer to
+  the [data diff documentation](/docs/monitoring/api#diff-field-explanation).
+</ParamField>
+
+<ParamField path="url" type="string">
+  The URL of the page the workflow is monitoring.
+</ParamField>
+
+<ParamField path="createdAt" type="string">
+  The timestamp in ISO format when the change was detected.
+</ParamField>
 
 Example:
 
@@ -73,6 +96,8 @@ Example:
   },
 }
 ```
+
+---
 
 ### `heartbeat`
 
