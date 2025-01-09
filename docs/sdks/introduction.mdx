@@ -1,0 +1,81 @@
+---
+title: Introduction
+---
+
+<Note>
+  The SDK's currently only support real-time monitoring which is only available
+  for Enterprise customers. To upgrade, [get in touch with our sales
+  team](https://www.kadoa.com/contact?type=sales).
+</Note>
+
+Kadoa provides SDKs for a number of languages and frameworks. If you use a language or framework that is not supported, you can use our REST API to interact with Kadoa.
+
+## Available SDKs
+
+<CardGroup cols={2}>
+  <Card title="Python" horizontal icon="python" href="#python">
+  </Card>
+  <Card title="TypeScript / JavaScript" horizontal icon="js" href="#typescript-javascript">
+  </Card>
+
+</CardGroup>
+
+## Prerequisites
+
+To get the most out of this guide, you’ll need to:
+
+- Create a Kadoa account
+- [Get your API key](/api-reference/introduction)
+
+## Python
+
+Install the Python SDK using [pip](https://pypi.org/project/kadoa-sdk/):
+
+```bash
+pip install kadoa-sdk
+```
+
+### Listen to real-time changes
+
+```python
+from kadoa_sdk import Kadoa
+kadoa_props = {
+    "team_api_key": TEAM_API_KEY
+}
+
+kadoa_client = Kadoa(**kadoa_props)
+
+def process_event(event):
+    print(event)
+
+kadoa_client.realtime.listen(process_event)
+```
+
+## TypeScript / JavaScript
+
+Install the TypeScript SDK using [npm](https://www.npmjs.com/package/@kadoa/node):
+
+```bash
+npm install @kadoa/node
+```
+
+### Listen to real-time changes
+
+```javascript
+const { Kadoa } = require("@kadoa/node");
+
+const main = () => {
+  const kadoaProps = {
+    teamApiKey: process.env.KADOA_TEAM_API_KEY,
+  };
+  const kadoaClient = new Kadoa(kadoaProps);
+
+  function customProcessEvent(event) {
+    console.log("Event received:", event);
+  }
+
+  kadoaClient.realtime.listen(customProcessEvent);
+};
+
+main();
+```

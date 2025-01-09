@@ -44,7 +44,11 @@
         "docs/chrome-extension",
         {
           "group": "Monitoring",
-          "pages": ["docs/monitoring/introduction", "docs/monitoring/api"]
+          "pages": [
+            "docs/monitoring/introduction",
+            "docs/monitoring/api",
+            "docs/monitoring/websocket"
+          ]
         },
         {
           "group": "Integrations",
@@ -68,6 +72,10 @@
             "docs/security/scim",
             "docs/security/sso"
           ]
+        },
+        {
+          "group": "SDKs",
+          "pages": ["docs/sdks/introduction"]
         }
       ]
     },
