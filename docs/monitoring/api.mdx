@@ -5,10 +5,9 @@ title: API Guide
 <Note>Real-time monitoring is currently only available for Enterprise customers. To upgrade, [get
     in touch with our sales team](https://www.kadoa.com/contact?type=sales).</Note>
 
-With our API, you can conveniently manage all your workflows that have monitoring enabled. You can:
-
-- Get all active workflows that have monitoring enabled.
-- Get historical data changes for one or multiple workflows.
+Our API enables you to track and manage all your monitored workflows. You can:
+- Get all active workflows with monitoring enabled
+- Retrieve historical data changes across your workflows
 
 
 ## Prerequisites
@@ -22,7 +21,7 @@ Use the following endpoint to retrieve your workflows:
 
 **GET** `/v4/workflows`
 
-[See API Reference](/api-reference/workflows/get-all-workflows)
+[See full API reference](/api-reference/workflows/get-all-workflows)
 
 The response will include all workflows that are in your scope (user, team, organization).
 
@@ -33,29 +32,37 @@ curl -X GET "https://api.kadoa.com/v4/workflows?limit=100&state=ACTIVE&monitorin
   -H "x-api-key: YOUR_API_KEY"
 ```
 
-## 2. Get Changes for Workflows
+## 2. Get Historical Data Changes
 
-The following endpoint returns historical data changes detected by your monitoring workflows. A "change" means the monitor spotted a relevant change in the data since the last check.
-
+The `/changes` endpoint returns all historical data changes detected by your monitoring workflows. By default, it returns changes from all your active workflows.
 ```bash
 curl -X GET "https://api.kadoa.com/v4/changes" \
   -H "x-api-key: YOUR_API_KEY"
 ```
 
-[See API Reference](/api-reference/monitoring/get-all-changes)
+You can filter changes by workflow and date range using the different query parameters. [See full API reference.](/api-reference/monitoring/get-all-changes)
 
-To fetch changes in a specific time range for specific workflows, you can use the corresponding query params:
 
+Example with filters:
 ```bash
-curl -X GET "https://api.kadoa.com/v4/changes?workflowIds=123456789,987654321&startDate=2024-11-01T00:00:00Z&endDate=2024-11-30T23:59:59Z" \
+curl -X GET "https://api.kadoa.com/v4/changes?startDate=2024-11-01T00:00:00Z&endDate=2024-11-30T23:59:59Z" \
   -H "x-api-key: YOUR_API_KEY"
 ```
 
 ### Diff Field Explanation
-Each change includes a `diff` array that shows what changed between checks. Each entry in diff represents text that was added or removed.
+Each change includes a `diff` array showing what changed between changes:
+```json
+    {
+      "value": "\"title\": \"somethingChanged\"\n}",
+      "added": true,
+      "removed": null,
+      "count": 2
+    }
+```
 
-- `value`: The text that changed.
-- `added`: true if this text is new in the latest version.
-- `removed`: true if this text was removed.
-- `count`: How many lines the changed text includes.
+- `value`: The changed text
+- `added`: `true` if text was added
+- `removed`: `true` if text was removed
+- `count`: Number of lines changed
 
+<Note>For real-time updates, consider using our [WebSocket SDK](/docs/monitoring/websocket) instead of polling this endpoint.</Note>
