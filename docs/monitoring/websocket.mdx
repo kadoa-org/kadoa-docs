@@ -1,5 +1,5 @@
 ---
-title: Websocket Integration
+title: WebSocket
 ---
 
 <Note>
@@ -8,7 +8,7 @@ title: Websocket Integration
   team](https://www.kadoa.com/contact?type=sales).
 </Note>
 
-With our Websocket API, you can listen to real-time changes for your workflows.
+With our WebSocket API, you can listen to real-time changes for your workflows.
 
 ## Introduction
 
@@ -42,7 +42,31 @@ Optional depending on the type:
 
 This message is sent when a workflow data changes.
 
-### `workflow_state_change`
+Example:
+
+```json
+{
+  "type": "workflow_data_change",
+  "timestamp": 1736367604663,
+  "id": "123",
+  "data": {
+    "id": "123",
+    "workflowId": "123",
+    "data": [
+      {"title": "Test News"},
+      {"title": "New News"}
+    ]
+    "diff": {
+      "count": 1,
+      "added": true,
+      "removed": null,
+      "value": "\"title\": \"New News\""
+    },
+    "url": "https://thisismymonitoredpage.com",
+    "createdAt": "2025-01-09T10:00:00Z",
+  },
+}
+```
 
 ### `heartbeat`
 
