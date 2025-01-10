@@ -8,24 +8,23 @@ title: Introduction
   team](https://www.kadoa.com/contact?type=sales).
 </Note>
 
-Kadoa provides SDKs for a number of languages and frameworks. If you use a language or framework that is not supported, you can use our REST API to interact with Kadoa.
+Kadoa provides SDKs to simplify features integration. If you use a language or framework that is not supported, you can use our REST API to interact with Kadoa.
 
 ## Available SDKs
 
 <CardGroup cols={2}>
   <Card title="Python" horizontal icon="python" href="#python">
   </Card>
-  <Card title="TypeScript / JavaScript" horizontal icon="js" href="#typescript-javascript">
+  <Card title="NodeJS" horizontal icon="js" href="#nodejs">
   </Card>
-
 </CardGroup>
 
 ## Prerequisites
 
 To get the most out of this guide, you’ll need to:
 
-- Create a Kadoa account
-- [Get your API key](/api-reference/introduction)
+- Have access to an existing Team or account, depending on the feature you want to use.
+- [Get the right API key](/api-reference/introduction)
 
 ## Python
 
@@ -51,7 +50,7 @@ def process_event(event):
 kadoa_client.realtime.listen(process_event)
 ```
 
-## TypeScript / JavaScript
+## NodeJS
 
 Install the TypeScript SDK using [npm](https://www.npmjs.com/package/@kadoa/node):
 
@@ -62,20 +61,16 @@ npm install @kadoa/node
 ### Listen to real-time changes
 
 ```javascript
-const { Kadoa } = require("@kadoa/node");
+import { Kadoa } from "@kadoa/node";
 
-const main = () => {
-  const kadoaProps = {
-    teamApiKey: process.env.KADOA_TEAM_API_KEY,
-  };
-  const kadoaClient = new Kadoa(kadoaProps);
-
-  function customProcessEvent(event) {
-    console.log("Event received:", event);
-  }
-
-  kadoaClient.realtime.listen(customProcessEvent);
+const kadoaProps = {
+  teamApiKey: process.env.KADOA_TEAM_API_KEY,
 };
+const kadoaClient = new Kadoa(kadoaProps);
 
-main();
+const customProcessEvent = (event) => {
+  console.log("Event received:", event);
+}
+
+kadoaClient.realtime.listen(customProcessEvent);
 ```
