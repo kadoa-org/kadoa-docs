@@ -80,7 +80,7 @@ Example:
   "timestamp": 1736367604663,
   "id": "2df91fbd-74c1-4d11-91aa-50030393574b",
   "data": {
-    "id": "a4f1938b-0f86-4626-9123-38b2540caaf5",
+    "id": "66d0c9e65baad1694a2132d0",
     "workflowId": "677fc12545e790b20a4eec34",
     "data": [
       {"title": "Test News"},
@@ -103,7 +103,8 @@ Example:
 ### `heartbeat`
 
 <Note>
-  Reconnection logic is handled by the SDK. If you implement a native WebSocket integration, you might need to handle reconnections yourself.
+  Reconnection logic is handled by the SDK. If you implement a native WebSocket
+  integration, you might need to handle reconnections yourself.
 </Note>
 
 This message is sent every 15 seconds. It's used to keep the connection alive. If you don't receive a heartbeat after 30 seconds, the connection is considered lost, reconnection is needed.
