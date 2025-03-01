@@ -11,7 +11,7 @@ Our API enables you to track and manage all your monitored workflows. You can:
 
 
 ## Prerequisites
-To get the most out of this guide, you’ll need to:
+To get the most out of this guide, you'll need to:
 - Create a Kadoa account
 - [Get your API key](/api-reference/introduction)
 
@@ -49,20 +49,148 @@ curl -X GET "https://api.kadoa.com/v4/changes?startDate=2024-11-01T00:00:00Z&end
   -H "x-api-key: YOUR_API_KEY"
 ```
 
-### Diff Field Explanation
-Each change includes a `diff` array showing what changed between changes:
+### Differences Field Explanation
+
+Each change includes a `differences` array showing structured representations of what changed:
+
 ```json
+{
+  "differences": [
     {
-      "value": "\"title\": \"somethingChanged\"\n}",
-      "added": true,
-      "removed": null,
-      "count": 2
+      "type": "changed",
+      "fields": [
+        {
+          "key": "title",
+          "previousValue": "Old Title",
+          "value": "New Title"
+        }
+      ]
     }
+  ]
+}
 ```
 
-- `value`: The changed text
-- `added`: `true` if text was added
-- `removed`: `true` if text was removed
-- `count`: Number of lines changed
+The `differences` field provides an object-based diffing with the following structure:
+
+- `type`: The type of change - can be `added`, `removed`, or `changed`
+- `fields`: All fields of the object (even if unchanged)
+
+Each field change includes:
+- `key`: Field name that was changed
+- `value`: Current field value
+- `previousValue`: Previous field value (only present for `changed` type)
+
+#### Example
+
+Let's look at a simplified example with three fields: `id`, `name`, and `status`.
+
+Data before change:
+```json
+{
+  "products": [
+    { "id": "001", "name": "Product A", "status": "In Stock" },
+    { "id": "002", "name": "Product B", "status": "Low Stock" },
+    { "id": "003", "name": "Product C", "status": "Out of Stock" },
+    { "id": "004", "name": "Product D", "status": "In Stock" }
+  ]
+}
+```
+
+Data after change:
+```json
+{
+  "products": [
+    { "id": "001", "name": "Product A Premium", "status": "In Stock" },
+    { "id": "003", "name": "Product C", "status": "In Stock" },
+    { "id": "004", "name": "Product D", "status": "In Stock" },
+    { "id": "005", "name": "Product E", "status": "New Arrival" }
+  ]
+}
+```
+
+The `differences` field would show:
+
+```json
+{
+  "differences": [
+    {
+      "type": "changed",
+      "fields": [
+        {
+          "key": "id",
+          "previousValue": "001",
+          "value": "001"
+        },
+        {
+          "key": "name",
+          "previousValue": "Product A",
+          "value": "Product A Premium"
+        },
+        {
+          "key": "status",
+          "previousValue": "In Stock",
+          "value": "In Stock"
+        }
+      ]
+    },
+    {
+      "type": "removed",
+      "fields": [
+        {
+          "key": "id",
+          "value": "002"
+        },
+        {
+          "key": "name",
+          "value": "Product B"
+        },
+        {
+          "key": "status",
+          "value": "Low Stock"
+        }
+      ]
+    },
+    {
+      "type": "changed",
+      "fields": [
+        {
+          "key": "id",
+          "previousValue": "003",
+          "value": "003"
+        },
+        {
+          "key": "name",
+          "previousValue": "Product C",
+          "value": "Product C"
+        },
+        {
+          "key": "status",
+          "previousValue": "Out of Stock",
+          "value": "In Stock"
+        }
+      ]
+    },
+    {
+      "type": "added",
+      "fields": [
+        {
+          "key": "id",
+          "value": "005"
+        },
+        {
+          "key": "name",
+          "value": "Product E"
+        },
+        {
+          "key": "status",
+          "value": "New Arrival"
+        }
+      ]
+    }
+  ]
+}
+```
+
+Note that item with `id: "004"` remains unchanged, so it doesn't appear in the differences array.
 
 <Note>For real-time updates, consider using our [WebSocket SDK](/docs/monitoring/websocket) instead of polling this endpoint.</Note>
