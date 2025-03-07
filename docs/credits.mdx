@@ -1,149 +1,62 @@
 ---
-title: Crawling
+title: "Credits and Usage"
+description: ""
 ---
 
-## Introduction
+## Overview
 
-Crawling is useful to automatically crawl all accessible subpages of a website and convert them into structured JSON or markdown.
-This guide helps you:
+Kadoa uses a credit system to charge for different types of usage. Each task costs a certain number of credits.
 
-- Initiate a crawling session
-- Check crawling session status
-- List crawled pages
-- Access crawled page content
+<Note>
+    Enterprise customers have custom usage limits. To discuss a tailored enterprise plan, [contact our sales
+    team](https://www.kadoa.com/pricing/enterprise).
+</Note>
 
-## Prerequisites
 
-To get the most out of this guide, you’ll need to:
+## Credit Costs
 
-- Create a Kadoa account
-- [Get your API key](/api-reference/introduction)
+### 1. Workflows
 
-## 1. Start a Crawl
+Workflows automatically extract data rows on a schedule.
 
-To initiate a web crawl, send a POST request to the `/crawl` endpoint with the desired configuration.
+| Type                  |   Cost     |
+| ----------------------- | ---------- |
+|Minimum cost per run | 10 credits |
+|Cost per data row  | 2 credits  |
 
-```bash
-curl -X POST "https://api.kadoa.com/v4/crawl" \
-  -H "Content-Type: application/json" \
-  -H "x-api-key: <Kadoa API Key>" \
-  -d '{
-    "url": "https://demo.vercel.store/",
-    "maxDepth": 10,
-    "maxPages": 50
-  }'
-```
+Examples:
 
-[See API Reference](/api-reference/crawling/start-crawling-session)
+- 100 data rows: `200 credits`
+- Extracting 3 rows: `10 credits` (minimum charge applies)
 
-A successful response should look like this:
 
-```json
-{
-  "message": "Session started",
-  "sessionId": "<sessionId>",
-  "error": null
-}
-```
 
-<Tip>
-  Use `pathsFilterIn` and `pathsFilterOut` to include or exclude specific paths. Adjust `timeout`, `maxDepth`, and
-  `maxPages` to refine the crawling process.
-</Tip>
+### 2. Adhoc Extractions
 
-## 2. Check Crawl Status
+Adhoc extractions let you instantly extract data from a single webpage. Unlike workflows which run on a schedule, these are one-time extractions that run instantly when requested.
 
-Monitor the progress of your crawling session using the `/crawl/status/<sessionId>` endpoint.
+| Type                                                   | Cost        |
+| ------------------------------------------------------ | ----------- |
+|  Basic extraction (`"html"`, `"markdown"`, `"body"`)    | 1 credit    |
+| Structured extraction (with template)                   | 10 credits  |
+| Location-specific extraction (additional)          | +5 credits  |
 
-```bash
-curl -X GET "https://api.kadoa.com/v4/crawl/<sessionId>/status" \
-  -H "x-api-key: <Kadoa API Key>"
-```
+### 3. Web Crawling
 
-[See API Reference](/api-reference/crawling/crawling-session-status)
+| Type                                                 | Cost      |
+| ------------------------------------------------------ | --------- |
+| Crawling a page                                 | 1 credit  |
+| Crawling with location (`countryCode`)        | 5 credits |
 
-You’ll see how many pages are crawled and whether the session is finished:
+---
 
-```json
-{
-  "payload": {
-    "crawledPages": 14,
-    "finished": true
-  },
-  "sessionId": "<sessionId>",
-  "error": null
-}
-```
+## Frequently Asked Questions
 
-## 3. List Crawled Pages
+**Do credits expire?**  
+Yes. All credits are valid for one billable month and do not carry over into the following month.
 
-Access the crawled pages using the `/crawl/<sessionId>/pages` endpoint with pagination.
+**What happens if a website can’t be scraped?**  
+You are only charged for successful requests. If there are any technical issues, we’ll investigate as soon as possible.
 
-```bash
-curl -X GET "https://api.kadoa.com/v4/crawl/<sessionId>/pages?currentPage=0&pageSize=100" \
-  -H "x-api-key: <Kadoa API Key>"
-```
-
-[See API Reference](/api-reference/crawling/get-crawled-pages)
-
-Query parameters:
-
-- `currentPage`: Positive integer, starting from 0.
-- `pageSize`: Positive integer, starting from 1.
-
-Sample Response:
-
-```json
-{
-  "payload": [
-    { "id": "<pageId>", "url": "https://demo.vercel.store/", "status": "DONE" },
-    { "id": "<pageId>", "url": "https://demo.vercel.store/about", "status": "CRAWLING" }
-  ],
-  "pagination": {
-    "currentPage": 1,
-    "pageSize": 25,
-    "totalRecords": 132,
-    "totalPages": 5
-  },
-  "sessionId": "<sessionId>",
-  "error": null
-}
-```
-
-## 4. Retrieve Page Content
-
-Now let's retrieve the content of the crawled pages in our preferred format. The API can deliver the page payload directly in an LLM-ready format, such as markdown.
-
-```bash
-curl -X GET "https://api.kadoa.com/v4/crawl/<sessionId>/pages/<pageId>?format=md" \
-  -H "x-api-key: <Kadoa API Key>"
-```
-
-[See API Reference](/api-reference/crawling/get-crawled-page-meta)
-
-Supported Formats: 
-
-- `html`: Full HTML structure
-- `md`: Markdown format
-
-Sample response (Markdown):
-
-```json
-{
-  "payload": "# Sample Markdown\n\n## Heading 2\n\nThis is a **bold** text and this is *italic*.\n\n",
-  "pageId": "<pageId>",
-  "pageFormat": "md",
-  "error": null
-}
-```
-
-Sample response (HTML):
-
-```json
-{
-  "payload": "<!DOCTYPE html>\n<html>\n<head>\n<title>Sample HTML</title></head><body>...</body>\n</html>",
-  "pageId": "<pageId>",
-  "pageFormat": "html",
-  "error": null
-}
-```
+**Do enterprise customers also get credits?**  
+Enterprise customers have custom usage commitments rather than a standard credit plan. [Contact our sales team](https://www.kadoa.com/pricing/enterprise) if you have high-volume data needs.

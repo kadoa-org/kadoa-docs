@@ -115,7 +115,7 @@ Sample Response:
 Now let's retrieve the content of the crawled pages in our preferred format. The API can deliver the page payload directly in an LLM-ready format, such as markdown.
 
 ```bash
-curl -X GET "https://api.kadoa.com/v4/crawl/<sessionId>/pages/<pageId>?format=md" \
+curl -X GET "https://api.kadoa.com/v4/crawl/<sessionId>/pages/{pageId}?format=md" \
   -H "x-api-key: <Kadoa API Key>"
 ```
 
